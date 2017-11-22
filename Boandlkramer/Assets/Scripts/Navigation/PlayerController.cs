@@ -52,8 +52,9 @@ public class PlayerController : MonoBehaviour {
 				StopCoroutine (attack);
        }
 
+	   // lose focus of enemy if outside focus distance
        if (focus != null && Vector3.Distance(transform.position, focus.transform.position) > focusDistance)
-           Defocus();
+           Defocus(focus);
 
 	}
 
@@ -72,8 +73,16 @@ public class PlayerController : MonoBehaviour {
 			}
 			else if (hit.collider.GetComponent<Enemy> () != null) {
 
+				// defocus current enemy
+				Defocus(focus);
+
+				// focus new enemy
 				focus = hit.collider.GetComponent<Enemy> ();
 				attack = Attack (hit.collider.GetComponent<Enemy> ());
+
+				// highlight focused enemy
+				focus.bHighlighted = true;
+
 				StartCoroutine (attack);
 			}
 			else {
@@ -107,7 +116,11 @@ public class PlayerController : MonoBehaviour {
 		return success;
 	}
 
-	void Defocus () {
+	void Defocus (Enemy enemy) {
+
+		// remove highlighting from enemy
+		if (enemy != null)
+			enemy.bHighlighted = false;
 
 		focus = null;
 	}
