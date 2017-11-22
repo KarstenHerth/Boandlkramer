@@ -52,6 +52,10 @@ public class PlayerController : MonoBehaviour {
 				StopCoroutine (attack);
        }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2d02a286d768fb551e95ba1633bd92916765f8ec
        if (Input.GetMouseButtonDown(1))
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -62,7 +66,11 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
+<<<<<<< HEAD
 	   // lose focus of enemy if outside focus distance
+=======
+
+>>>>>>> 2d02a286d768fb551e95ba1633bd92916765f8ec
        if (focus != null && Vector3.Distance(transform.position, focus.transform.position) > focusDistance)
            Defocus(focus);
 
