@@ -15,6 +15,7 @@ public class SkillbarUI : MonoBehaviour {
 		 KeyCode.Alpha7,
 		 KeyCode.Alpha8,
 		 KeyCode.Alpha9,
+		 KeyCode.Alpha0
 	 };
 
 	// quick reference to the inventory
@@ -27,6 +28,8 @@ public class SkillbarUI : MonoBehaviour {
 	// reference to skill parent from skill bar
 	[SerializeField]
 	Transform skillParent;
+
+	SkillSlot[] skillSlots;
 
 
     // Text for counting health potions
@@ -48,6 +51,11 @@ public class SkillbarUI : MonoBehaviour {
         textManaPotions = textManaParent.GetComponent<TextMeshProUGUI>();
 
         playerData = Player.GetComponent<Character>().data;
+
+		// reference to skill slots
+		skillSlots = skillParent.GetComponentsInChildren<SkillSlot>();
+
+		Debug.Log(skillSlots.Length.ToString());
     }
 
 	// Update is called once per frame
@@ -69,8 +77,11 @@ public class SkillbarUI : MonoBehaviour {
 		{
 			if (Input.GetKeyDown(keyCodes[i]))
 			{
-				int numberPressed = i + 1;
-				Debug.Log(numberPressed);
+				// call click routine of skill slot in order to activate the corresponding skill as active skill
+				if (i < skillSlots.Length)
+				{
+					skillSlots[i].OnLeftClick();
+				}
 			}
 
 		}
