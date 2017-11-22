@@ -34,17 +34,5 @@ public class Skill : ScriptableObject {
             GameObject instance = Instantiate(projectile, character.transform.position, Quaternion.FromToRotation(Vector3.forward, target - character.transform.position));
             instance.GetComponent<Fireball>().Initialize(_target, 3f, damage, rangeAOE);
         }
-
-        if (isAOE)
-        {
-            Collider[] colliders = Physics.OverlapSphere(_target, rangeAOE);
-            foreach (Collider collider in colliders)
-            {
-                if (collider.GetComponent<Character> () != null)
-                {
-                    collider.GetComponent<Character>().TakeDamage(damage, dmgType);
-                }
-            }
-        }
     }
 }
