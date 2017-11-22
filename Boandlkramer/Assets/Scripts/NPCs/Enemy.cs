@@ -47,7 +47,7 @@ public class Enemy : Character {
         return 10f / (data.baseSpeed + 10f);
     }
 
-    protected override int ReducedDamage(int damage) {
+    protected override int ReducedDamage(int damage, DamageType dmgType = DamageType.None) {
 
         return damage - data.baseArmor;
     }

@@ -52,6 +52,16 @@ public class PlayerController : MonoBehaviour {
 				StopCoroutine (attack);
        }
 
+       if (Input.GetMouseButtonDown(1))
+        {
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 100, mask))
+            {
+                character.SecondaryAttack(hit.point);
+            }
+        }
+
        if (focus != null && Vector3.Distance(transform.position, focus.transform.position) > focusDistance)
            Defocus();
 

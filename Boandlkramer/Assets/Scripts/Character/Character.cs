@@ -16,8 +16,12 @@ public class Character : MonoBehaviour {
 
 	bool canAttack = true;
 
+    public Skill fireball;
+
     void Start()
     {
+        fireball = Instantiate(fireball);
+        fireball.character = this;
         inventory = GetComponent<Inventory>();
     }
 
@@ -30,9 +34,14 @@ public class Character : MonoBehaviour {
 		}
 	}
 
-	public void TakeDamage (int amount) {
+    public void SecondaryAttack(Vector3 target)
+    {
+        fireball.Cast(target);
+    }
 
-		int rd = ReducedDamage (amount);
+	public void TakeDamage (int amount, DamageType dmgType = DamageType.None) {
+
+		int rd = ReducedDamage (amount, dmgType);
 		if (ui != null && text != null) {
 			TextMeshPro instance = Instantiate (text, ui.transform) as TextMeshPro;
 			instance.text = rd.ToString ();
@@ -86,7 +95,7 @@ public class Character : MonoBehaviour {
         return 10f / (wpnSpeed + data.attributes["dexterity"].GetValue());
     }
 
-    protected virtual int ReducedDamage (int damage)
+    protected virtual int ReducedDamage (int damage, DamageType dmgType = DamageType.None)
     {
         int armAbs = 0;
         float armRel = 1f;
