@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HUDController : MonoBehaviour {
 
@@ -17,10 +18,28 @@ public class HUDController : MonoBehaviour {
 	[SerializeField]
 	Slider enemyHealth;
 
+	[SerializeField]
+	Transform textHealth;
+	TextMeshProUGUI txtHealth;
+	[SerializeField]
+	Transform textMana;
+	TextMeshProUGUI txtMana;
+
+	void Start()
+	{
+		txtMana = textMana.GetComponent<TextMeshProUGUI>();
+		txtHealth = textHealth.GetComponent<TextMeshProUGUI>();
+	}
+
+
+
 	void Update () {
 
 		playerHealth.value = (float) player.data.stats["health"].Current / (float) player.data.stats["health"].Max;
 		playerMana.value = (float) player.data.stats["mana"].Current / (float) player.data.stats["mana"].Max;
+
+		txtHealth.text = player.data.stats["health"].Current.ToString() + " / " + player.data.stats["health"].Max;
+		txtMana.text = player.data.stats["mana"].Current.ToString() + " / " + player.data.stats["mana"].Max;
 
 		if (playerController.focus != null) {
 
