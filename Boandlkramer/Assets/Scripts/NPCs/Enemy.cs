@@ -11,12 +11,22 @@ public class Enemy : Character {
 	[SerializeField]
 	EnemyType enemyType;
 
+	// graphic that is displayed when this enemy is focused by the player
+	GameObject highlightGraphic;
+
+	// set to true if this enemy is focused by the player
+	public bool bHighlighted = false;
+
+	// for changing highlight focus effect
+	bool bWasJustHighlighted = false;
+
 	void Start()
 	{
 		if (enemyType != null)
 		{
 			LoadCharacterData();
 		}
+		highlightGraphic = GameObject.FindGameObjectWithTag("highlight");
 	}
 
 	void LoadCharacterData()
@@ -35,6 +45,27 @@ public class Enemy : Character {
         data.level = enemyType.level;
 
         loot = enemyType.loot;
+	}
+
+	void Update()
+	{
+		if (bHighlighted)
+		{
+			//highlightGraphic.transform.localScale = transform.localScale;
+			highlightGraphic.transform.position = transform.position;
+			bWasJustHighlighted = true;
+		}
+		else
+		{
+			// not in focus anymore, check if we have already removed the effect from this enemy
+			if (bWasJustHighlighted)
+			{
+				// if this is not the case, remove highlight graphic and remember that we´ve removed the effect
+				highlightGraphic.transform.position = new Vector3(0f, -10f, 0f);
+				bWasJustHighlighted = false;
+			}
+		}
+
 	}
 
     protected override int CalculateDamage(Character other) {
@@ -61,8 +92,13 @@ public class Enemy : Character {
 
 		DropLoot ();
 
+		// defocus
+		bHighlighted = false;
+		highlightGraphic.transform.position = new Vector3(0f, -10f, 0f);
+
 		Destroy (gameObject);
 	}
+
 
 	void DropLoot () {
 

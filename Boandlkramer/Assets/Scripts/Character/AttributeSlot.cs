@@ -24,6 +24,9 @@ public class AttributeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField]
     GameObject textDescription;
 
+	[SerializeField]
+	GameObject textEffect;
+
 
     // reference to the player object
     [SerializeField]

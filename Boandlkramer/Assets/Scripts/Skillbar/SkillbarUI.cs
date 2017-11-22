@@ -4,12 +4,33 @@ using UnityEngine;
 
 public class SkillbarUI : MonoBehaviour {
 
-    // quick reference to the inventory
-    Inventory inventory;
+	// number keycodes for skill selection
+	private KeyCode[] keyCodes = {
+		 KeyCode.Alpha1,
+		 KeyCode.Alpha2,
+		 KeyCode.Alpha3,
+		 KeyCode.Alpha4,
+		 KeyCode.Alpha5,
+		 KeyCode.Alpha6,
+		 KeyCode.Alpha7,
+		 KeyCode.Alpha8,
+		 KeyCode.Alpha9,
+		 KeyCode.Alpha0
+	 };
+
+	// quick reference to the inventory
+	Inventory inventory;
 
     // for reference the player and access character data
     public Transform Player;
     CharacterData playerData;
+
+	// reference to skill parent from skill bar
+	[SerializeField]
+	Transform skillParent;
+
+	SkillSlot[] skillSlots;
+
 
     // Text for counting health potions
     public Transform textHealthParent;
@@ -30,21 +51,40 @@ public class SkillbarUI : MonoBehaviour {
         textManaPotions = textManaParent.GetComponent<TextMeshProUGUI>();
 
         playerData = Player.GetComponent<Character>().data;
+
+		// reference to skill slots
+		skillSlots = skillParent.GetComponentsInChildren<SkillSlot>();
+
+		Debug.Log(skillSlots.Length.ToString());
     }
-	
+
 	// Update is called once per frame
-	void Update () {
+	void Update()
+	{
 
-        // check input for consuming potions
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            UseManaPotion();
-        }
-        else if (Input.GetKeyDown(KeyCode.Q))
-        {
-            UseHealthPotion();
-        }
+		// check input for consuming potions
+		if (Input.GetKeyDown(KeyCode.R))
+		{
+			UseManaPotion();
+		}
+		else if (Input.GetKeyDown(KeyCode.Q))
+		{
+			UseHealthPotion();
+		}
 
+		// input for skill selection
+		for (int i = 0; i < keyCodes.Length; i++)
+		{
+			if (Input.GetKeyDown(keyCodes[i]))
+			{
+				// call click routine of skill slot in order to activate the corresponding skill as active skill
+				if (i < skillSlots.Length)
+				{
+					skillSlots[i].OnLeftClick();
+				}
+			}
+
+		}
 	}
 
     void UpdateSkillbarUI()
@@ -59,7 +99,7 @@ public class SkillbarUI : MonoBehaviour {
         if (inventory.healthPotions > 0)
         {
             inventory.healthPotions--;
-            playerData.stats["health"].Current += 20;
+            playerData.stats["health"].Current +=(int)(0.2f * playerData.stats["health"].Max);
             UpdateSkillbarUI();
         }
     }
@@ -69,7 +109,7 @@ public class SkillbarUI : MonoBehaviour {
         if (inventory.manaPotions > 0)
         {
             inventory.manaPotions--;
-            playerData.stats["mana"].Current += 20;
+            playerData.stats["mana"].Current += (int)(0.2f * playerData.stats["mana"].Max);
             UpdateSkillbarUI();
         }
     }
