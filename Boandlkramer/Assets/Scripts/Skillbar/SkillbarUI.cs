@@ -88,7 +88,7 @@ public class SkillbarUI : MonoBehaviour {
         if (inventory.healthPotions > 0)
         {
             inventory.healthPotions--;
-            playerData.stats["health"].Current += 20;
+            playerData.stats["health"].Current +=(int)(0.2f * playerData.stats["health"].Max);
             UpdateSkillbarUI();
         }
     }
@@ -98,7 +98,7 @@ public class SkillbarUI : MonoBehaviour {
         if (inventory.manaPotions > 0)
         {
             inventory.manaPotions--;
-            playerData.stats["mana"].Current += 20;
+            playerData.stats["mana"].Current += (int)(0.2f * playerData.stats["mana"].Max);
             UpdateSkillbarUI();
         }
     }
