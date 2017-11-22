@@ -167,6 +167,12 @@ Prefab:
       propertyPath: highlightGraphic
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 114908086923058914, guid: a3bac58095c9d8441b11c71f68dc07ed,
+        type: 2}
+      propertyPath: fireball
+      value: 
+      objectReference: {fileID: 11400000, guid: 74760b3fb1920854baf77d9f92cd82c3,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a3bac58095c9d8441b11c71f68dc07ed, type: 2}
   m_IsPrefabParent: 0
@@ -229,6 +235,12 @@ Prefab:
       propertyPath: highlightGraphic
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 114908086923058914, guid: a3bac58095c9d8441b11c71f68dc07ed,
+        type: 2}
+      propertyPath: fireball
+      value: 
+      objectReference: {fileID: 11400000, guid: 74760b3fb1920854baf77d9f92cd82c3,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a3bac58095c9d8441b11c71f68dc07ed, type: 2}
   m_IsPrefabParent: 0
@@ -1559,6 +1571,12 @@ Prefab:
       propertyPath: highlightGraphic
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 114908086923058914, guid: a3bac58095c9d8441b11c71f68dc07ed,
+        type: 2}
+      propertyPath: fireball
+      value: 
+      objectReference: {fileID: 11400000, guid: 74760b3fb1920854baf77d9f92cd82c3,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a3bac58095c9d8441b11c71f68dc07ed, type: 2}
   m_IsPrefabParent: 0
@@ -1715,6 +1733,12 @@ Prefab:
       propertyPath: charUI
       value: 
       objectReference: {fileID: 850414440}
+    - target: {fileID: 114583425018159614, guid: 9fa0ac47407850d4c900662ecdaf2990,
+        type: 2}
+      propertyPath: fireball
+      value: 
+      objectReference: {fileID: 11400000, guid: 74760b3fb1920854baf77d9f92cd82c3,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9fa0ac47407850d4c900662ecdaf2990, type: 2}
   m_IsPrefabParent: 0
