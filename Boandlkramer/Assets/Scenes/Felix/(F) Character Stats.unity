@@ -2112,6 +2112,12 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: 74760b3fb1920854baf77d9f92cd82c3,
         type: 2}
+    - target: {fileID: 114583425018159614, guid: 9fa0ac47407850d4c900662ecdaf2990,
+        type: 2}
+      propertyPath: activeSkill
+      value: 
+      objectReference: {fileID: 11400000, guid: cc8d21c3081993144889748dba5b3574,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9fa0ac47407850d4c900662ecdaf2990, type: 2}
   m_IsPrefabParent: 0

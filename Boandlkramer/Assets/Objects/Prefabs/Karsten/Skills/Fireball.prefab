@@ -37,8 +37,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4997676541412850}
   - component: {fileID: 54109239142504200}
-  - component: {fileID: 114312708885475360}
   - component: {fileID: 135320111475181274}
+  - component: {fileID: 114533309938316416}
   m_Layer: 0
   m_Name: Fireball
   m_TagString: Untagged
@@ -185,7 +185,7 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114312708885475360
+--- !u!114 &114533309938316416
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -193,10 +193,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1326737564180860}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32b616bcf17b8b34da520c64bc803db2, type: 3}
+  m_Script: {fileID: 11500000, guid: 37170044252ef8949a8412c684c6c233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {x: 0, y: 0, z: 0}
   explosion: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b, type: 2}
 --- !u!135 &135320111475181274
 SphereCollider:

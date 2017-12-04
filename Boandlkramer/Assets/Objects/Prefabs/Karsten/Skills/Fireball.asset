@@ -18,5 +18,5 @@ MonoBehaviour:
   dmgType: 4
   range: 1
   speed: 3
-  AOERange: 0.5
+  AOERange: 0.2
   projectile: {fileID: 1326737564180860, guid: e300e142e49a3c148923f1f95c169698, type: 2}
