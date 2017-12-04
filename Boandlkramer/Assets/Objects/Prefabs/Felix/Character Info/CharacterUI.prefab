@@ -66,3 +66,4 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  infoCanvas: {fileID: 0}

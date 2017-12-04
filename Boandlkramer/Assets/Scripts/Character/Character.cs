@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -16,12 +17,13 @@ public class Character : MonoBehaviour {
 
 	public bool canAttack = true;
 
-    public Skill fireball;
+	public Skill[] skillbook;
+    public Skill activeSkill;
 
     void Start()
     {
-        fireball = Instantiate(fireball);
-        fireball.character = this;
+        activeSkill = Instantiate(activeSkill);
+        activeSkill.character = this;
         inventory = GetComponent<Inventory>();
     }
 
@@ -37,7 +39,7 @@ public class Character : MonoBehaviour {
 
     public void SecondaryAttack(Vector3 target)
     {
-        fireball.Cast(target);
+        activeSkill.Cast(target);
     }
 
 	public void TakeDamage (int amount, DamageType dmgType = DamageType.None) {
