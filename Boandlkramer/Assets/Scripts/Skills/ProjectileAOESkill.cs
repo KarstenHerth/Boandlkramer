@@ -11,8 +11,11 @@ public class ProjectileAOESkill : OffensiveSkill {
 
 	public GameObject projectile;
 
-	public override void Cast (Vector3 target, GameObject target_obj = null) {
+	public override void Cast (Vector3 target, GameObject target_obj) {
+
+		base.Cast (target, target_obj);
+
 		GameObject instance = Instantiate (projectile, character.transform.position, Quaternion.FromToRotation (Vector3.forward, target - character.transform.position));
-		instance.GetComponent<Projectile> ().Initialize (target, speed, damage, AOERange);
+		instance.GetComponent<Projectile> ().Initialize (target, speed, damage, dmgType, AOERange);
 	}
 }
