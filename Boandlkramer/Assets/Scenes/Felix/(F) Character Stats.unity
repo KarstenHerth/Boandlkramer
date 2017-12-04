@@ -741,7 +741,7 @@ Prefab:
     - target: {fileID: 224917483310559408, guid: c66e9173e4eb0e14b84af9e30999eaf4,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 452.8
       objectReference: {fileID: 0}
     - target: {fileID: 224883355982083980, guid: c66e9173e4eb0e14b84af9e30999eaf4,
         type: 2}
@@ -791,7 +791,7 @@ Prefab:
     - target: {fileID: 224516389508196730, guid: c66e9173e4eb0e14b84af9e30999eaf4,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224393798372875098, guid: c66e9173e4eb0e14b84af9e30999eaf4,
         type: 2}
@@ -831,7 +831,7 @@ Prefab:
     - target: {fileID: 224374113055806622, guid: c66e9173e4eb0e14b84af9e30999eaf4,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 224168697655443332, guid: c66e9173e4eb0e14b84af9e30999eaf4,
         type: 2}
@@ -1116,47 +1116,47 @@ Prefab:
     - target: {fileID: 224102173676137080, guid: c66e9173e4eb0e14b84af9e30999eaf4,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 224519387283596434, guid: c66e9173e4eb0e14b84af9e30999eaf4,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 224250478197008710, guid: c66e9173e4eb0e14b84af9e30999eaf4,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 224160534757722260, guid: c66e9173e4eb0e14b84af9e30999eaf4,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 224168697655443332, guid: c66e9173e4eb0e14b84af9e30999eaf4,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 224292168403008358, guid: c66e9173e4eb0e14b84af9e30999eaf4,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 224838077075101526, guid: c66e9173e4eb0e14b84af9e30999eaf4,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 224393798372875098, guid: c66e9173e4eb0e14b84af9e30999eaf4,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 224265075840996524, guid: c66e9173e4eb0e14b84af9e30999eaf4,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 114458039133275174, guid: c66e9173e4eb0e14b84af9e30999eaf4,
         type: 2}
@@ -2024,7 +2024,7 @@ Prefab:
     - target: {fileID: 114583425018159614, guid: 9fa0ac47407850d4c900662ecdaf2990,
         type: 2}
       propertyPath: skillbook.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4708924643158044, guid: 9fa0ac47407850d4c900662ecdaf2990, type: 2}
       propertyPath: m_LocalPosition.x
@@ -2088,8 +2088,7 @@ Prefab:
         type: 2}
       propertyPath: activeSkill
       value: 
-      objectReference: {fileID: 11400000, guid: fd739aa8d4b5f194ab9146d132e7bd17,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 114583425018159614, guid: 9fa0ac47407850d4c900662ecdaf2990,
         type: 2}
       propertyPath: skillbook.Array.data[0]
@@ -2101,6 +2100,12 @@ Prefab:
       propertyPath: skillbook.Array.data[1]
       value: 
       objectReference: {fileID: 11400000, guid: cc8d21c3081993144889748dba5b3574,
+        type: 2}
+    - target: {fileID: 114583425018159614, guid: 9fa0ac47407850d4c900662ecdaf2990,
+        type: 2}
+      propertyPath: skillbook.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 659ea37bfd0884a4892d6c8116554deb,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9fa0ac47407850d4c900662ecdaf2990, type: 2}

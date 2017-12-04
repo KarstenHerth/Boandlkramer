@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4159227915334866}
   - component: {fileID: 54422389348699134}
   - component: {fileID: 135061900106912276}
-  - component: {fileID: 114118153559565652}
+  - component: {fileID: 114729142327328428}
   m_Layer: 0
   m_Name: Missile
   m_TagString: Untagged
@@ -54,8 +54,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4907009957905022}
   - component: {fileID: 33922627775609034}
-  - component: {fileID: 135874943854803280}
   - component: {fileID: 23487668685141970}
+  - component: {fileID: 114773033122096052}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -196,7 +196,7 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114118153559565652
+--- !u!114 &114729142327328428
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -204,10 +204,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1302359380971610}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37170044252ef8949a8412c684c6c233, type: 3}
+  m_Script: {fileID: 11500000, guid: 4b0d5770ee6382643b8163d9428a4d21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 0}
+  impact: {fileID: 0}
+--- !u!114 &114773033122096052
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1376443469631434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b0d5770ee6382643b8163d9428a4d21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impact: {fileID: 0}
 --- !u!135 &135061900106912276
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -219,16 +231,4 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.2
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &135874943854803280
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1376443469631434}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}

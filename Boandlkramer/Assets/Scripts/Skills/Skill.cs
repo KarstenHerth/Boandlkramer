@@ -14,6 +14,6 @@ public class Skill : ScriptableObject {
 
     public virtual void Cast (Vector3 target, GameObject target_obj) {
 
-		character.data.stats["mana"].Current -= 10;
+		character.data.stats["mana"].Current -= manaCost;
 	}
 }
