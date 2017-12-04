@@ -52,6 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
+  highlight: {fileID: 0}
   skillParent: {fileID: 0}
+  activeSkillIndex: 0
   textHealthParent: {fileID: 0}
   textManaParent: {fileID: 0}

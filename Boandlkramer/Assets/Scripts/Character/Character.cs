@@ -22,9 +22,16 @@ public class Character : MonoBehaviour {
 
     void Start()
     {
-        activeSkill = Instantiate(activeSkill);
-        activeSkill.character = this;
+		for (int i=0; i < skillbook.Length; i++)
+		{
+			skillbook[i] = Instantiate(skillbook[i]);
+			skillbook[i].character = this;
+		}
+		activeSkill = skillbook[0];
+       // activeSkill.character = this;
         inventory = GetComponent<Inventory>();
+
+		FindObjectOfType<SkillbarUI>().FillSkillSlots();
     }
 
 	public void Attack (Character other) {

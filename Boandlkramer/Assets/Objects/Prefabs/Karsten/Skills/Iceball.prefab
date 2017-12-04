@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4850886559862030}
   - component: {fileID: 33433158643019890}
-  - component: {fileID: 135333697413504482}
   - component: {fileID: 23041793723194336}
   m_Layer: 0
   m_Name: Ice
@@ -208,18 +207,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 0}
---- !u!135 &135333697413504482
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1178914682820714}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &135898491542116894
 SphereCollider:
   m_ObjectHideFlags: 1
