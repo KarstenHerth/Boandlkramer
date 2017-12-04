@@ -9,7 +9,7 @@ public class ProjectileAOESkill : OffensiveSkill {
 	public float speed = 3f;
 	public float AOERange = 0.5f;
 
-	GameObject projectile;
+	public GameObject projectile;
 
 	public override void Cast (Vector3 target, GameObject target_obj = null) {
 		Vector3 _target = character.transform.position;
