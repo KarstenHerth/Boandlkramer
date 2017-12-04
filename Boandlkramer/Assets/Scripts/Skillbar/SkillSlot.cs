@@ -11,7 +11,7 @@ public class SkillSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 	public GameObject player;
 
 	// skill stored in this slot
-	// protected Item item;
+	public Skill skillInSlot;
 
 	// index of this slot
 	[SerializeField]
@@ -31,9 +31,6 @@ public class SkillSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 	[SerializeField]
 	GameObject dragObject;
 
-	Vector3 startPosition;
-	Transform startParent;
-
 	// slot that is being dragged. -1 if not dragging anything
 	public static int dragSlotIndex = -1;
 
@@ -42,9 +39,19 @@ public class SkillSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 
 
 
-	void Start()
+	// update visuals of the slot
+	public void UpdateSlot()
 	{
-
+		Image image = GetComponentsInChildren<Image>()[1];
+		if (skillInSlot != null)
+		{
+			image.sprite = skillInSlot.icon;
+			image.enabled = true;
+		}
+		else
+		{
+			image.enabled = false;
+		}
 	}
 
 	public void AddItem(Item newItem)
@@ -93,8 +100,8 @@ public class SkillSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 		// fill item data
 		if (textSkillName != null && textDescription != null)
 		{
-			textSkillName.GetComponent<TextMeshProUGUI>().text = "Skill Name - " + this.name;
-			textDescription.GetComponent<TextMeshProUGUI>().text = "Skill description - " + this.name;
+			textSkillName.GetComponent<TextMeshProUGUI>().text = skillInSlot.name;
+			textDescription.GetComponent<TextMeshProUGUI>().text = skillInSlot.description;
 		}
 
 
@@ -107,6 +114,8 @@ public class SkillSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 		if (infoCanvas != null)
 		{
 			infoCanvas.SetActive(false);
+			textSkillName.GetComponent<TextMeshProUGUI>().text = "Skill Name";
+			textDescription.GetComponent<TextMeshProUGUI>().text = "Description";
 		}
 
 		// not pointing at a skill slot anymore
@@ -120,9 +129,6 @@ public class SkillSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 		dragObject.SetActive(true);
 		dragObject.GetComponentsInChildren<Image>()[1].sprite = GetComponentsInChildren<Image>()[1].sprite;
 		dragSlotIndex = index;
-		startPosition = transform.position;
-		startParent = transform.parent;
-		//GetComponent<CanvasGroup>().blocksRaycasts = false; 
 
 	}
 
@@ -143,6 +149,7 @@ public class SkillSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 		if (currentHoverSlotIndex > -1)
 		{
 			Debug.Log("Switch skill from slot " + dragSlotIndex + " with skill from slot " + currentHoverSlotIndex);
+			FindObjectOfType<SkillbarUI>().SwitchSkills(dragSlotIndex, currentHoverSlotIndex);
 		}
 
 		dragObject.SetActive(false);
@@ -159,7 +166,13 @@ public class SkillSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 	public virtual void OnLeftClick()
 	{
 		// assign skill as active
-		Debug.Log("CLICKED SKILL SLOT: " + this.name);
+		if (skillInSlot != null)
+		{
+			player.GetComponent<Character>().activeSkill = skillInSlot;
+			SkillbarUI _bar = FindObjectOfType<SkillbarUI>();
+			_bar.activeSkillIndex = index;
+			_bar.UpdateSkillbarUI();
+		}
 		
 	}
 

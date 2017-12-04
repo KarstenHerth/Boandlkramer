@@ -25,11 +25,18 @@ public class SkillbarUI : MonoBehaviour {
     public Transform Player;
     CharacterData playerData;
 
+	// reference to the highlight image
+	[SerializeField]
+	Transform highlight;
+
 	// reference to skill parent from skill bar
 	[SerializeField]
 	Transform skillParent;
 
 	SkillSlot[] skillSlots;
+
+	// active skill index
+	public int activeSkillIndex = 0;
 
 
     // Text for counting health potions
@@ -56,8 +63,59 @@ public class SkillbarUI : MonoBehaviour {
 		// reference to skill slots
 		skillSlots = skillParent.GetComponentsInChildren<SkillSlot>();
 
-		Debug.Log(skillSlots.Length.ToString());
     }
+
+	// add a new skill from the skillbook to the skillbar ui
+	public bool AddSkillToBar(Skill s)
+	{
+		for (int i = 0; i < skillSlots.Length; i++)
+		{
+			// found an empty slot to put the skill in
+			if (skillSlots[i].skillInSlot == null)
+			{
+				skillSlots[i].skillInSlot = s;
+				skillSlots[i].UpdateSlot();
+				return true;
+			}
+		}
+		// no place left to put a spell in
+		return false;
+	}
+
+	// filling the skill slots with all skills currently available in the skillbook
+	public void FillSkillSlots()
+	{
+		Skill[] skills = Player.GetComponent<Character>().skillbook;
+		for (int i = 0; i < skills.Length; i++)
+		{
+			skillSlots[i].skillInSlot = skills[i];
+			skillSlots[i].UpdateSlot();
+		}		
+	}
+
+	public void SwitchSkills(int from, int to)
+	{
+		Skill _temp = skillSlots[from].skillInSlot;
+		// active skill is going to be empty... switch it!
+		if (skillSlots[to].skillInSlot == null && activeSkillIndex == from)
+		{
+			activeSkillIndex = to;
+		}
+		skillSlots[from].skillInSlot = skillSlots[to].skillInSlot;
+		skillSlots[to].skillInSlot = _temp;
+		skillSlots[from].UpdateSlot();
+		skillSlots[to].UpdateSlot();
+
+		if (skillSlots[from].skillInSlot != null)
+		{
+			// keep the skill activated
+			skillSlots[from].OnLeftClick();
+		}
+
+		UpdateSkillbarUI();
+
+		
+	}
 
 	// Update is called once per frame
 	void Update()
@@ -88,12 +146,14 @@ public class SkillbarUI : MonoBehaviour {
 		}
 	}
 
-    void UpdateSkillbarUI()
-    {
-        // update number of potions available to the player
-        textHealthPotions.text = inventory.healthPotions.ToString();
-        textManaPotions.text = inventory.manaPotions.ToString();
-    }
+	public void UpdateSkillbarUI()
+	{
+		// update number of potions available to the player
+		textHealthPotions.text = inventory.healthPotions.ToString();
+		textManaPotions.text = inventory.manaPotions.ToString();
+
+		highlight.position = skillSlots[activeSkillIndex].transform.position;
+	}
 
     void UseHealthPotion()
     {

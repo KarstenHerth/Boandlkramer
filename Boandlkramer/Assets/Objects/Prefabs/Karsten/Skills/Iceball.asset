@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 490b7256a6a0f5144b9e99c5becc64bd, type: 3}
   m_Name: Iceball
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 52ae6826ced727540809d3b4fce7c332, type: 3}
   description: 
   character: {fileID: 0}
   damage: 20
