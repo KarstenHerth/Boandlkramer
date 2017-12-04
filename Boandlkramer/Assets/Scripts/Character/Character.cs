@@ -44,9 +44,9 @@ public class Character : MonoBehaviour {
 		}
 	}
 
-    public void SecondaryAttack(Vector3 target)
+    public void SecondaryAttack(Vector3 target, Character other)
     {
-        activeSkill.Cast(target);
+        activeSkill.Cast(target, other.gameObject);
     }
 
 	public void TakeDamage (int amount, DamageType dmgType = DamageType.None) {

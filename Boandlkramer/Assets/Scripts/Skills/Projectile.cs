@@ -5,6 +5,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour {
 
 	int _dmg;
+	DamageType _dmgType;
 	float _range;
 
 	public GameObject explosion;
@@ -20,9 +21,10 @@ public class Projectile : MonoBehaviour {
 		}
 	}
 
-	public void Initialize (Vector3 target, float speed, int damage, float rangeAOE)
+	public void Initialize (Vector3 target, float speed, int damage, DamageType damageType, float rangeAOE)
 	{
 		_dmg = damage;
+		_dmgType = damageType;
 		_range = rangeAOE;
 
 		target.y = transform.position.y;
@@ -46,7 +48,7 @@ public class Projectile : MonoBehaviour {
 		{
 			if (collider.GetComponent<Character> () != null)
 			{
-				collider.GetComponent<Character> ().TakeDamage (_dmg, DamageType.Fire);
+				collider.GetComponent<Character> ().TakeDamage (_dmg, _dmgType);
 			}
 		}
 

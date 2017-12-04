@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class HomingProjectile : MonoBehaviour {
 
-	GameObject _target;
+	GameObject _target_obj;
 	int _dmg;
+	DamageType _dmgType;
 	float _speed;
 
 	public GameObject impact;
@@ -21,23 +22,28 @@ public class HomingProjectile : MonoBehaviour {
 		}
 	}
 
-	public void Initialize (GameObject target, float speed, int damage) {
+	public void Initialize (GameObject target, float speed, int damage, DamageType dmgType) {
 
 		_dmg = damage;
+		_dmgType = dmgType;
 		_speed = speed;
-
-		_target = target;
+		_target_obj = target;
+		targetCollider = target.GetComponent<Collider> ();
+		StartCoroutine (Move ());
 	}
 
 	void Explode () {
-		GameObject instance = Instantiate (impact, transform.position, Quaternion.identity) as GameObject;
-		Destroy (instance, 3f);
+		if (impact != null) {
+			GameObject instance = Instantiate (impact, transform.position, Quaternion.identity) as GameObject;
+			Destroy (instance, 3f);
+		}
+		_target_obj.GetComponent<Character> ().TakeDamage (_dmg, _dmgType);
 		Destroy (gameObject);
 	}
 
 	IEnumerator Move () {
 		while (true) {
-			Vector3 direction = _target.transform.position - transform.position;
+			Vector3 direction = _target_obj.transform.position - transform.position;
 			GetComponent<Rigidbody> ().velocity = new Vector3 (direction.x, 0f, direction.z).normalized * _speed;
 		}
 	}
