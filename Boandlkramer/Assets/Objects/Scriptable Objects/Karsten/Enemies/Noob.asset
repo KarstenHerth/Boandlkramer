@@ -23,3 +23,6 @@ MonoBehaviour:
   level: 1
   loot:
   - {fileID: 11400000, guid: f9ca5577207a7594baddd3ee169ebf43, type: 2}
+  - {fileID: 11400000, guid: 640fce1d015af3846864e948e079c32d, type: 2}
+  - {fileID: 11400000, guid: 612bac53a43078a48b90fbc735d74fcd, type: 2}
+  - {fileID: 11400000, guid: 0973998b7e2946943b31b5d39817a908, type: 2}
