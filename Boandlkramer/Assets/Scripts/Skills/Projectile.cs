@@ -36,9 +36,11 @@ public class Projectile : MonoBehaviour {
 
 	void Explode ()
 	{
-		GameObject instance = Instantiate (explosion, transform.position, Quaternion.identity) as GameObject;
-		instance.transform.localScale *= _range;
-		Destroy (instance, 3f);
+		if (explosion != null) {
+			GameObject instance = Instantiate (explosion, transform.position, Quaternion.identity) as GameObject;
+			instance.transform.localScale *= _range;
+			Destroy (instance, 3f);
+		}
 		Collider[] colliders = Physics.OverlapSphere (transform.position, _range);
 		foreach (Collider collider in colliders)
 		{

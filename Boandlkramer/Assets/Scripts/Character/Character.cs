@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -16,6 +17,7 @@ public class Character : MonoBehaviour {
 
 	public bool canAttack = true;
 
+	public Skill[] skillbook;
     public Skill activeSkill;
 
     void Start()
