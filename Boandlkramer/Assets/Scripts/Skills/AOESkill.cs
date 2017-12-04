@@ -6,9 +6,11 @@ using UnityEngine;
 public class AOESkill : OffensiveSkill {
 
 
-	public override void Cast (Vector3 target, GameObject target_obj) {
+	public override bool Cast (Vector3 target, GameObject target_obj) {
 
-		base.Cast (target, target_obj);
+		if (!base.Cast (target, target_obj))
+			return false;
 
+		return true;
 	}
 }
