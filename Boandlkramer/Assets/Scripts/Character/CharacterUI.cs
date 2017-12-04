@@ -31,6 +31,10 @@ public class CharacterUI : MonoBehaviour
     // Buttons
     public Button[] attributeIncreaseButtons;
 
+	// reference to the info panel to display
+	[SerializeField]
+	GameObject infoCanvas;
+
 	CharacterData charData;
 
 	void Start()
@@ -50,9 +54,16 @@ public class CharacterUI : MonoBehaviour
 		{
 			characterUI.SetActive(!characterUI.activeSelf);
 
-			// update values
+			// update values or hide info canvas
 			if (characterUI.activeSelf)
+			{
 				UpdateCharacterUI();
+			}
+			else
+			{
+				infoCanvas.transform.position = new Vector2(-200f, -200f);
+				infoCanvas.SetActive(false);
+			}
 		}
 
 	}

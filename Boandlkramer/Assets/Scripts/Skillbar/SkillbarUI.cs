@@ -50,6 +50,7 @@ public class SkillbarUI : MonoBehaviour {
         textHealthPotions = textHealthParent.GetComponent<TextMeshProUGUI>();
         textManaPotions = textManaParent.GetComponent<TextMeshProUGUI>();
 
+		// reference to player data in order to manipulate health etc.
         playerData = Player.GetComponent<Character>().data;
 
 		// reference to skill slots
@@ -96,6 +97,7 @@ public class SkillbarUI : MonoBehaviour {
 
     void UseHealthPotion()
     {
+		// consumes a health potion and adds 20% of max health to the player
         if (inventory.healthPotions > 0)
         {
             inventory.healthPotions--;
@@ -106,7 +108,8 @@ public class SkillbarUI : MonoBehaviour {
 
     void UseManaPotion()
     {
-        if (inventory.manaPotions > 0)
+		// consumes a mana potion and adds 20% of max mana to the player
+		if (inventory.manaPotions > 0)
         {
             inventory.manaPotions--;
             playerData.stats["mana"].Current += (int)(0.2f * playerData.stats["mana"].Max);
