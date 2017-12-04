@@ -14,7 +14,7 @@ public class Character : MonoBehaviour {
 
     Inventory inventory;
 
-	bool canAttack = true;
+	public bool canAttack = true;
 
     public Skill fireball;
 
