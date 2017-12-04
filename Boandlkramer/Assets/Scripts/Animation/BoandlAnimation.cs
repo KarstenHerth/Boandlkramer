@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Animation : MonoBehaviour {
+public class BoandlAnimation : MonoBehaviour {
 
     public Animator anim;
     NavMeshAgent nav;
@@ -18,4 +18,9 @@ public class Animation : MonoBehaviour {
         float move = nav.velocity.magnitude/nav.speed;
         anim.SetFloat("Speed", move);
 	}
+
+    public void Trigger(string trig)
+    {
+        anim.SetTrigger(trig);
+    }
 }

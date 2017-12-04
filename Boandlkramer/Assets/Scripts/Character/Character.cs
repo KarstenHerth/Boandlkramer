@@ -37,7 +37,8 @@ public class Character : MonoBehaviour {
 	public void Attack (Character other) {
 
 		if (canAttack) {
-
+            if(GetComponent<BoandlAnimation>()!=null)
+                GetComponent<BoandlAnimation>().Trigger("Attack");
 			StartCoroutine (AttackCooldown (CalculateAttackSpeed ()));
 			other.TakeDamage (CalculateDamage(other));
 		}
