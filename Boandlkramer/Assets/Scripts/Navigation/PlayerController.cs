@@ -58,7 +58,10 @@ public class PlayerController : MonoBehaviour {
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100, mask))
             {
-                character.SecondaryAttack(hit.point, hit.collider.GetComponent<Enemy> ());
+				Defocus (focus);
+				focus = hit.collider.GetComponent<Enemy> ();
+				focus.bHighlighted = true;
+				character.SecondaryAttack(hit.point, hit.collider.GetComponent<Enemy> ());
             }
         }
 
