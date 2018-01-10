@@ -12,7 +12,6 @@ public class Pickup : Interactable {
         Debug.Log("Picking up " + item.name);
         Debug.Log("Description: " + item.description);
 
-
         // Add the item to the inventory if possible
         if (Inventory.instance.Add(item))
         {
