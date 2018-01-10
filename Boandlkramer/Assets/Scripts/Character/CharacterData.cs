@@ -62,6 +62,7 @@ public class CharacterData {
 		{
 			level++;
             stats["health"].Current = stats["health"].Max;
+            stats["mana"].Current = stats["mana"].Max;
             remainingAttributePoints += attributePointsPerLevel;
 
             // this is for testing if we gained that much experience to level up more than one level
