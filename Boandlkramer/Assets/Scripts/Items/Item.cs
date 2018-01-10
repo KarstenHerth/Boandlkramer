@@ -22,7 +22,11 @@ public class Item : ScriptableObject
 
     public bool bIsUnique = false;
 
-    public void Spawn(Vector3 pos)
+	// can be used to make the object automatically interacting within a certain range and certain characters / other objects 
+	// (see player controller)
+	public bool bAutoInteract = false;
+
+	public void Spawn(Vector3 pos)
     {
 
         GameObject go = new GameObject(name);
@@ -36,6 +40,7 @@ public class Item : ScriptableObject
         mr.material.color = Color.red;
         Pickup pickup = go.AddComponent<Pickup>();
         pickup.item = this;
+		go.tag = "Pickup";
     }
 
 

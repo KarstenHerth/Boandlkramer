@@ -18,4 +18,5 @@ public class Pickup : Interactable {
             DestroyObject(this.gameObject);
         }
     }
+
 }

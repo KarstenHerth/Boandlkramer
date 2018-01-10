@@ -15,5 +15,10 @@ MonoBehaviour:
   icon: {fileID: 0}
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   description: 
+  attributeMods: []
+  defenseMods: []
+  attackMods: []
+  bIsUnique: 0
+  bAutoInteract: 1
   target: Mana
   amount: 1
