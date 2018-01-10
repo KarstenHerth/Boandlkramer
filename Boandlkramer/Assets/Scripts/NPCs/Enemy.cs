@@ -11,6 +11,7 @@ public class Enemy : Character {
 	[SerializeField]
 	EnemyType enemyType;
 
+
 	// graphic that is displayed when this enemy is focused by the player
 	GameObject highlightGraphic;
 
@@ -22,11 +23,14 @@ public class Enemy : Character {
 
 	void Start()
 	{
+
 		if (enemyType != null)
 		{
 			LoadCharacterData();
 		}
 		highlightGraphic = GameObject.FindGameObjectWithTag("highlight");
+
+
 	}
 
 	void LoadCharacterData()
