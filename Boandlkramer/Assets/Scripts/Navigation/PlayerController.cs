@@ -24,6 +24,9 @@ public class PlayerController : MonoBehaviour {
 	float focusDistance = 10f;
 	public Enemy focus;
 
+	// range within player collects gold and potions automatically
+	public float autoInteractionRange = 1f;
+
 	void Start () {
 
 		if (cam == null)
@@ -71,6 +74,23 @@ public class PlayerController : MonoBehaviour {
 
 		if (focus != null && Vector3.Distance(transform.position, focus.transform.position) > focusDistance)
            Defocus(focus);
+
+		// check for items that can be picked up automatically
+		// get all colliders within the awareness radius
+		Collider[] collidingObjects = Physics.OverlapSphere(transform.position, autoInteractionRange);
+		foreach (Collider coll in collidingObjects)
+		{
+			// we found a player within the awareness radius - this object will become the new target
+			if (coll.tag == "Pickup")
+			{
+				Debug.Log("Pickup in range!");
+				Pickup pu = coll.GetComponent<Pickup>();
+				if (pu.item.bAutoInteract)
+				{
+					pu.Interact(character);
+				}
+			}
+		}
 
 	}
 
