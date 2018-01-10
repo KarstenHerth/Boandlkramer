@@ -68,12 +68,12 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler, IPointerEnterH
 			string attributes = "";
 			string defenses = "";
 			string attacks = "";
-
+			
 			foreach (AttributeModifier atr in item.attributeMods)
 			{
 				if (atr.amount > 0)
 				{
-					attributes += "<color=red>" + atr.name + ": <color=green> +" + atr.amount.ToString() + "\n";
+					attributes += atr.name + ": +" + atr.amount.ToString() + "\n";
 				}
 			}
 
