@@ -25,5 +25,10 @@ public class EnemyType : ScriptableObject {
 
 	// chance to drop something from loot list
 	public float dropchance = .05f;
+
+	// lootlist
     public Item[] loot;
+
+	// number of randomly generated items added to lootlist
+	public int nRandomlyGeneratedLoot = 1;
 }
