@@ -65,8 +65,35 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler, IPointerEnterH
 
             // fill item data
             textName.text = item.name;
-            textStats.text = "-";
-            textDescription.text = item.description;
+			string attributes = "";
+			string defenses = "";
+			string attacks = "";
+			
+			foreach (AttributeModifier atr in item.attributeMods)
+			{
+				if (atr.amount > 0)
+				{
+					attributes += atr.name + ": +" + atr.amount.ToString() + "\n";
+				}
+			}
+
+			foreach (DefenseModifier def in item.defenseMods)
+			{
+				if (def.absolute > 0 || def.relative > 0)
+				{
+					defenses += def.name + ": +" + def.absolute.ToString() + ", + " + def.relative.ToString() + "% \n";
+				}
+			}
+
+			foreach (AttackModifier att in item.attackMods)
+			{
+				if (att.damage > 0)
+				{
+					attacks += att.name + ": +" + att.damage.ToString() + "\n";
+				}
+			}
+			textStats.text = attributes + "\n" + defenses + "\n" + attacks;
+			textDescription.text = item.description;
 
             // adjust info box position
             Vector3 pos = icon.transform.position;

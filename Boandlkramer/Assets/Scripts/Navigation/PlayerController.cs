@@ -57,7 +57,9 @@ public class PlayerController : MonoBehaviour {
 
        if (Input.GetMouseButtonDown(1))
         {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+			StopAllCoroutines ();
+			agent.SetDestination (transform.position);
+			Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100, mask))
             {

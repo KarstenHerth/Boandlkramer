@@ -12,12 +12,15 @@ public class Skill : ScriptableObject {
 
     public Character character;
 
-    public virtual bool Cast (Vector3 target, GameObject target_obj) {
-
+	public virtual bool CastCheck (Vector3 target, GameObject target_obj) {
 		if (character.data.stats["mana"].Current < manaCost)
 			return false;
 
 		character.data.stats["mana"].Current -= manaCost;
+		return true;
+	}
+
+    public virtual bool Cast (Vector3 target, GameObject target_obj) {
 		return true;
 	}
 }

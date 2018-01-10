@@ -35,7 +35,7 @@ public class Item : ScriptableObject
         go.layer = 8;
         MeshFilter mf = go.AddComponent<MeshFilter>();
         mf.mesh = mesh;
-        BoxCollider bc = go.AddComponent<BoxCollider>();
+        go.AddComponent<BoxCollider>();
         MeshRenderer mr = go.AddComponent<MeshRenderer>();
         mr.material.color = Color.red;
         Pickup pickup = go.AddComponent<Pickup>();

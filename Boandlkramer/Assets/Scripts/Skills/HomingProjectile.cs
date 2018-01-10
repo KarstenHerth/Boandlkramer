@@ -45,7 +45,7 @@ public class HomingProjectile : MonoBehaviour {
 			if (_target_obj == null)
 				break;
 			Vector3 direction = _target_obj.transform.position - transform.position;
-			GetComponent<Rigidbody> ().velocity = new Vector3 (direction.x, 0f, direction.z).normalized * _speed;
+			GetComponent<Rigidbody> ().velocity = new Vector3 (direction.x, direction.y, direction.z).normalized * _speed;
 			yield return 0;
 		}
 	}

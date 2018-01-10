@@ -10,6 +10,16 @@ public class ProjectileHomingSkill : OffensiveSkill {
 
 	public GameObject projectile;
 
+	public override bool CastCheck (Vector3 target, GameObject target_obj) {
+		if (target_obj == null)
+			return false;
+
+		if (!base.CastCheck (target, target_obj))
+			return false;
+
+		return true;
+	}
+
 	public override bool Cast (Vector3 target, GameObject target_obj) {
 
 		if (target_obj == null)
@@ -18,7 +28,7 @@ public class ProjectileHomingSkill : OffensiveSkill {
 		if (!base.Cast (target, target_obj))
 			return false;
 
-		GameObject instance = Instantiate (projectile, character.transform.position, Quaternion.FromToRotation (Vector3.forward, target - character.transform.position));
+		GameObject instance = Instantiate (projectile, character.castPoint.transform.position, Quaternion.FromToRotation (Vector3.forward, target - character.transform.position));
 		instance.GetComponent<HomingProjectile> ().Initialize (target_obj, speed, damage, dmgType);
 
 		return true;

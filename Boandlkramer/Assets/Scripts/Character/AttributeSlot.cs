@@ -32,12 +32,12 @@ public class AttributeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField]
     GameObject player;
 
-    CharacterData charData;
+    //CharacterData charData;
 
     void Start()
     {
         // safe character data for quick access
-        charData = player.GetComponent<Character>().data;
+        //charData = player.GetComponent<Character>().data;
 
     }
 
