@@ -13,4 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: 
   target: strength
-  amount: 100
+  amount: 5
