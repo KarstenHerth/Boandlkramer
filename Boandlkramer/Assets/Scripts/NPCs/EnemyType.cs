@@ -29,6 +29,6 @@ public class EnemyType : ScriptableObject {
 	// lootlist
     public Item[] loot;
 
-	// number of randomly generated items added to lootlist
-	public int nRandomlyGeneratedLoot = 1;
+	// number of randomly generated items (dependant on level) added to lootlist
+	// public int nRandomlyGeneratedLoot = 1;
 }

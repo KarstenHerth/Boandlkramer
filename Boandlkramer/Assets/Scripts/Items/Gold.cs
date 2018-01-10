@@ -7,8 +7,6 @@ using UnityEngine;
 public class Gold : Item {
 
     // Amount of gold
-    public int amount = 1;
-
-    
+    public int amount = 1;    
 
 }
