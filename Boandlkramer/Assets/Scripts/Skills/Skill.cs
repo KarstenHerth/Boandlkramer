@@ -12,7 +12,7 @@ public class Skill : ScriptableObject {
 
     public Character character;
 
-	public bool CheckMana () {
+	public virtual bool CastCheck (Vector3 target, GameObject target_obj) {
 		if (character.data.stats["mana"].Current < manaCost)
 			return false;
 

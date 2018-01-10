@@ -50,11 +50,21 @@ public class Character : MonoBehaviour {
     public void SecondaryAttack(Vector3 target, Character other)
     {
 		if (canCast) {
-			if (activeSkill.CheckMana ()) {
-				StartCoroutine (Cast (target, other, 0.5f));
-				if (GetComponent<BoandlAnimation> () != null)
-					GetComponent<BoandlAnimation> ().Trigger ("Cast");
+			if (other != null) {
+				if (activeSkill.CastCheck (target, other.gameObject)) {
+					StartCoroutine (Cast (target, other, 0.33f));
+					if (GetComponent<BoandlAnimation> () != null)
+						GetComponent<BoandlAnimation> ().Trigger ("Cast");
+				}
 			}
+			else {
+				if (activeSkill.CastCheck (target, null)) {
+					StartCoroutine (Cast (target, other, 0.33f));
+					if (GetComponent<BoandlAnimation> () != null)
+						GetComponent<BoandlAnimation> ().Trigger ("Cast");
+
+				}
+			}	
 		}
 	}
 
