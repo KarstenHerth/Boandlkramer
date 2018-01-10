@@ -11,11 +11,14 @@ public class Character : MonoBehaviour {
 	[SerializeField]
 	TextMeshPro text;
 
+	public GameObject castPoint;
+
     public Character[] charactersGainingXPFromThisCharacter;
 
     Inventory inventory;
 
 	public bool canAttack = true;
+	public bool canCast = true;
 
 	public Skill[] skillbook;
     public Skill activeSkill;
@@ -46,18 +49,12 @@ public class Character : MonoBehaviour {
 
     public void SecondaryAttack(Vector3 target, Character other)
     {
-		if (other != null)
-		{
-            if (GetComponent<BoandlAnimation>() != null)
-                GetComponent<BoandlAnimation>().Trigger("Cast");
-            activeSkill.Cast(target, other.gameObject);
-
-		}
-		else
-		{
-            if (GetComponent<BoandlAnimation>() != null)
-                GetComponent<BoandlAnimation>().Trigger("Cast");
-            activeSkill.Cast(target, null);
+		if (canCast) {
+			if (activeSkill.CheckMana ()) {
+				StartCoroutine (Cast (target, other, 0.5f));
+				if (GetComponent<BoandlAnimation> () != null)
+					GetComponent<BoandlAnimation> ().Trigger ("Cast");
+			}
 		}
 	}
 
@@ -143,11 +140,18 @@ public class Character : MonoBehaviour {
 	}
 
 	IEnumerator AttackCooldown (float amount) {
-
 		canAttack = false;
-
 		yield return new WaitForSeconds (amount);
-
 		canAttack = true;
+	}
+
+	IEnumerator Cast (Vector3 target, Character other, float amount) {
+		canCast = false;
+		yield return new WaitForSeconds (amount);
+		if (other != null)
+			activeSkill.Cast (target, other.gameObject);
+		else
+			activeSkill.Cast (target, null);
+		canCast = true;
 	}
 }
