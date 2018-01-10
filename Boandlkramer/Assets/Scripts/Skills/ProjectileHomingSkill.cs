@@ -10,6 +10,16 @@ public class ProjectileHomingSkill : OffensiveSkill {
 
 	public GameObject projectile;
 
+	public override bool CastCheck (Vector3 target, GameObject target_obj) {
+		if (target_obj == null)
+			return false;
+
+		if (!base.CastCheck (target, target_obj))
+			return false;
+
+		return true;
+	}
+
 	public override bool Cast (Vector3 target, GameObject target_obj) {
 
 		if (target_obj == null)

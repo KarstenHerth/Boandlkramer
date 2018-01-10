@@ -27,13 +27,13 @@ public class Projectile : MonoBehaviour {
 		_dmgType = damageType;
 		_range = rangeAOE;
 
-		target.y = transform.position.y;
+		//target.y = transform.position.y;
 		targetCollider = new GameObject ("Target").AddComponent<SphereCollider> ();
 		targetCollider.transform.position = target;
 		targetCollider.radius = 0.2f;
 		targetCollider.isTrigger = true;
 		Vector3 direction = target - transform.position;
-		GetComponent<Rigidbody> ().velocity = new Vector3 (direction.x, 0f, direction.z).normalized * speed;
+		GetComponent<Rigidbody> ().velocity = new Vector3 (direction.x, direction.y, direction.z).normalized * speed;
 	}
 
 	void Explode ()
