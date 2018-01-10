@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Pickup : Interactable {
 
@@ -15,7 +16,14 @@ public class Pickup : Interactable {
         // Add the item to the inventory if possible
         if (Inventory.instance.Add(item))
         {
-            DestroyObject(this.gameObject);
+			if (item.bAutoInteract) {
+				GameObject instance = Instantiate (Inventory.instance.pickupUI, transform.position, Quaternion.identity) as GameObject;
+				if (item is Gold)
+					instance.GetComponentInChildren<TextMeshPro> ().text = "Gold";
+				if (item is Potion)
+					instance.GetComponentInChildren<TextMeshPro> ().text = "Potion";
+			}
+			DestroyObject (this.gameObject);
         }
     }
 

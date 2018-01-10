@@ -52,6 +52,7 @@ public class Inventory : MonoBehaviour {
     // for currently equipped items
     public Dictionary<EquipLocation, Item> equipment = new Dictionary<EquipLocation, Item>() { { EquipLocation.Hands, null }, { EquipLocation.Chest, null }, { EquipLocation.Head, null }, { EquipLocation.Gloves, null }, { EquipLocation.Boots, null }};
 
+	public GameObject pickupUI;
 
     void Start()
     {
