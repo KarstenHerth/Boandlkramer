@@ -48,7 +48,9 @@ public class Character : MonoBehaviour {
     {
 		if (other != null)
 		{
-			activeSkill.Cast(target, other.gameObject);
+            if (GetComponent<BoandlAnimation>() != null)
+                GetComponent<BoandlAnimation>().Trigger("Cast");
+            activeSkill.Cast(target, other.gameObject);
 
 		}
 		else
