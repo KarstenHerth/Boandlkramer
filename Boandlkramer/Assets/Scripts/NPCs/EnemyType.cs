@@ -23,5 +23,7 @@ public class EnemyType : ScriptableObject {
 
     public int level = 1;
 
+	// chance to drop something from loot list
+	public float dropchance = .05f;
     public Item[] loot;
 }
