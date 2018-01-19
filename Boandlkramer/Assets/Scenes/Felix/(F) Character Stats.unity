@@ -2084,6 +2084,12 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: 659ea37bfd0884a4892d6c8116554deb,
         type: 2}
+    - target: {fileID: 114800982382327524, guid: 9fa0ac47407850d4c900662ecdaf2990,
+        type: 2}
+      propertyPath: pickupUI
+      value: 
+      objectReference: {fileID: 1612490890946086, guid: 949b6a4fd5c64394891471b43c37158c,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9fa0ac47407850d4c900662ecdaf2990, type: 2}
   m_IsPrefabParent: 0
