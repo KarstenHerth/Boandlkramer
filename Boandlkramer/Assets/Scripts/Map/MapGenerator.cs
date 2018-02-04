@@ -33,6 +33,7 @@ public class MapGenerator : MonoBehaviour {
 	void Start () {
 
 		GenerateMap ();
+		ControlVisibility ();
 	}
 
 	// Generates a new map with certain parameters.
@@ -139,6 +140,12 @@ public class MapGenerator : MonoBehaviour {
 		foreach (Wall wall in GetWalls ())
 			connectors.AddRange (wall.connectors);
 		return connectors.ToArray ();
+	}
+
+	public void ControlVisibility () {
+		foreach (MapObject mo in GetComponentsInChildren<MapObject> ()) {
+			mo.ControlVisibility (Camera.main);
+		}
 	}
 
 	// Helper functions for visual representation.
