@@ -7,6 +7,15 @@ using UnityEngine;
 public class Gold : Item {
 
     // Amount of gold
-    public int amount = 1;    
+    public int amount = 1;
+
+	// factor for gold amount dependent on enemy level
+	int factor = 10;
+	
+	public override void Init(int level)
+	{
+		amount = Random.Range(level * factor, (level + 2) * factor);
+		description = amount.ToString();
+	}
 
 }

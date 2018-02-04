@@ -108,6 +108,17 @@ public class Enemy : Character {
 
 		// drops random loot of loot list if the player is lucky
 		if (Random.Range(0, 100) < enemyType.dropchance * 100)
-			loot[Random.Range (0, loot.Length)].Spawn (transform.position);
+		{
+			loot[Random.Range(0, loot.Length)].Spawn(transform.position, enemyType.level);
+
+			int num = 1;
+			while (Random.Range(0, 100) < enemyType.incrementalDropchance * 100 && num < enemyType.maxDrops)
+			{
+				// drop more items
+				Debug.Log("additional item");
+				loot[Random.Range(0, loot.Length)].Spawn(transform.position, enemyType.level);
+				num++;
+			}
+		}
 	}
 }

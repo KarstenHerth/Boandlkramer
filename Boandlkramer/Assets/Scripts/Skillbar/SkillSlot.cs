@@ -98,7 +98,7 @@ public class SkillSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 		}
 
 		// fill item data
-		if (textSkillName != null && textDescription != null)
+		if (skillInSlot != null && textSkillName != null && textDescription != null)
 		{
 			textSkillName.GetComponent<TextMeshProUGUI>().text = skillInSlot.name;
 			textDescription.GetComponent<TextMeshProUGUI>().text = skillInSlot.description;

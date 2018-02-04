@@ -26,10 +26,12 @@ public class Item : ScriptableObject
 	// (see player controller)
 	public bool bAutoInteract = false;
 
-	public void Spawn(Vector3 pos)
+
+	public void Spawn(Vector3 pos, int level = 1)
     {
 
         GameObject go = new GameObject(name);
+	
         go.transform.position = pos;
         go.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
         go.layer = 8;
@@ -40,8 +42,15 @@ public class Item : ScriptableObject
         mr.material.color = Color.red;
         Pickup pickup = go.AddComponent<Pickup>();
         pickup.item = this;
+		// initialize drop, dependent on the level of the character that dropped the item
+		pickup.item.Init(level);
 		go.tag = "Pickup";
     }
+
+	public virtual void Init(int level = 1)
+	{
+
+	}
 
 
 
