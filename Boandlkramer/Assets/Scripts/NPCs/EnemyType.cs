@@ -24,7 +24,13 @@ public class EnemyType : ScriptableObject {
     public int level = 1;
 
 	// chance to drop something from loot list
-	public float dropchance = .05f;
+	public float dropchance = .5f;
+
+	// chance to drop multiple items from loot list
+	public float incrementalDropchance = .2f;
+
+	// maximum items can be dropped by this enemy
+	public int maxDrops = 3;
 
 	// lootlist
     public Item[] loot;
