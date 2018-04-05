@@ -11,8 +11,12 @@ public class PlayerController : MonoBehaviour {
 	Camera cam;
 	[SerializeField]
 	LayerMask mask;
-	
-	public GameObject indicator;
+
+    // For playing sound effects
+    [SerializeField]
+    AudioManager audioManager;
+
+    public GameObject indicator;
 
 	NavMeshAgent agent;
 	Character character;
@@ -93,6 +97,22 @@ public class PlayerController : MonoBehaviour {
 				}
 			}
 		}
+
+        // Play footsteps if player is walking
+        if (agent.desiredVelocity.magnitude > 0)
+        {
+            Debug.Log("Walk!");
+            if (!audioManager.IsPlaying("Footsteps"))
+            {
+                audioManager.Play("Footsteps");
+                Debug.Log("Play Steps!");
+            }
+        }
+        else
+        {
+            if (audioManager.IsPlaying("Footsteps"))
+                audioManager.Stop("Footsteps");
+        }
 
 	}
 
