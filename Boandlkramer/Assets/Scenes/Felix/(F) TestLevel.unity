@@ -1805,15 +1805,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: Theme
-    clip: {fileID: 8300000, guid: 1da5ec947a506a649a45163c7e5a8c68, type: 3}
+    clip: {fileID: 8300000, guid: 247ebe1fd45a2da4cb74ec742e2426db, type: 3}
     volume: 1
     pitch: 1
     Loop: 1
     source: {fileID: 0}
   - name: Footsteps
     clip: {fileID: 8300000, guid: fa434cf6138da9d4a8052afcca5aee6d, type: 3}
-    volume: 0.3
-    pitch: 1
+    volume: 0.15
+    pitch: 0.7
     Loop: 1
     source: {fileID: 0}
 --- !u!4 &1698004352
