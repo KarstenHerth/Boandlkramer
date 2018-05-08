@@ -116,6 +116,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: ebad839c39a55bc45a88924a94e96199, type: 2}
   m_StaticBatchInfo:
@@ -175,13 +176,19 @@ MonoBehaviour:
     baseSpeed: 10
     baseArmor: 0
     charUI: {fileID: 0}
+    xpDropMultiplier: 50
+    xpForLevelMultiplier: 50
   ui: {fileID: 1442217680063318}
   text: {fileID: 114100534705493256, guid: 8c67aa0d55bd26346ba11ed18587954a, type: 2}
+  castPoint: {fileID: 0}
   charactersGainingXPFromThisCharacter:
   - {fileID: 0}
-  loot:
-  - {fileID: 11400000, guid: 612bac53a43078a48b90fbc735d74fcd, type: 2}
+  canAttack: 1
+  canCast: 1
+  skillbook: []
+  activeSkill: {fileID: 0}
   enemyType: {fileID: 11400000, guid: f7e7b18159b609b4b81e0e8970558761, type: 2}
+  bHighlighted: 0
 --- !u!114 &114996404344096550
 MonoBehaviour:
   m_ObjectHideFlags: 1

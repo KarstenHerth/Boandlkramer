@@ -27,6 +27,12 @@ public class CharacterData {
     // for updating UI
     public CharacterUI charUI;
 
+	// scaling drop of XP
+	public int xpDropMultiplier = 50;
+
+	// scaling for xp needed for level up
+	public int xpForLevelMultiplier = 50;
+
 	public CharacterData () {
 
         attributes = new Dictionary<string, Attribute>() { { "strength", new Attribute ()}, { "dexterity", new Attribute ()},
@@ -49,7 +55,7 @@ public class CharacterData {
 		if (lvl == 1)
 			return 0;
 		else
-			return 100*(lvl * lvl);
+			return xpForLevelMultiplier*(lvl * lvl);
 	}
 
     // adds an amount of XP points and increases the level if enough xp was gained
@@ -92,7 +98,8 @@ public class CharacterData {
     // calculates the amount of XP this character "drops" if he dies
     public int XPDropping()
     {
-        return level * 1000;
+		Debug.Log("XP Drop: " + (level * xpDropMultiplier).ToString());
+        return level * xpDropMultiplier;
     }
 	
 }

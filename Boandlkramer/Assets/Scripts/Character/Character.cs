@@ -20,17 +20,25 @@ public class Character : MonoBehaviour {
 	public bool canAttack = true;
 	public bool canCast = true;
 
+	// all skills the player may have
 	public Skill[] skillbook;
-    public Skill activeSkill;
+
+	// all skills the player possesses at the moment
+	public Skill[] availableSkills;
+
+	// skill that is active right now
+	public Skill activeSkill;
 
     void Start()
     {
+		availableSkills = new Skill[skillbook.Length];
 		for (int i=0; i < skillbook.Length; i++)
 		{
-			skillbook[i] = Instantiate(skillbook[i]);
-			skillbook[i].character = this;
+			availableSkills[i] = Instantiate(skillbook[i]);
+			availableSkills[i].name = skillbook[i].name;
+			availableSkills[i].character = this;
 		}
-		activeSkill = skillbook[0];
+		activeSkill = availableSkills[0];
        // activeSkill.character = this;
         inventory = GetComponent<Inventory>();
 

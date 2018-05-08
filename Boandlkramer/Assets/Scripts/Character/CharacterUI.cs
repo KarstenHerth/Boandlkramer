@@ -54,16 +54,18 @@ public class CharacterUI : MonoBehaviour
 		{
 			characterUI.SetActive(!characterUI.activeSelf);
 
-			// update values or hide info canvas
-			if (characterUI.activeSelf)
-			{
-				UpdateCharacterUI();
-			}
-			else
+			// hide info canvas if window was closed
+			if(!characterUI.activeSelf)
 			{
 				infoCanvas.transform.position = new Vector2(-200f, -200f);
 				infoCanvas.SetActive(false);
 			}
+		}
+
+		// update character values while window is opened
+		if (characterUI.activeSelf)
+		{
+			UpdateCharacterUI();
 		}
 
 	}
@@ -116,7 +118,7 @@ public class CharacterUI : MonoBehaviour
 		int currentXP = charData.GetCurrentExperiencePoints();
 		int neededXP = charData.CalculateExperienceForLevel(level + 1);
 		int lastLevelXP = charData.CalculateExperienceForLevel(level);
-		textExperience.text = lastLevelXP.ToString() + " / " + currentXP.ToString() + " / " + neededXP.ToString();
+		textExperience.text = lastLevelXP.ToString() + " / " + "<color=blue><b>" + currentXP.ToString() + "</b> / " + "<color=white>" + neededXP.ToString();
         float xpRatio = ((float)currentXP - (float)lastLevelXP) / ((float)neededXP - (float)lastLevelXP);
         sliderExperience.value = xpRatio;
 
