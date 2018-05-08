@@ -90,46 +90,62 @@ public class Character : MonoBehaviour {
 			Death ();
 	}
 
-    protected virtual int CalculateDamage(Character other)
+	// Calculates the chance for a critical hit of this character on a character of level "levelOther"
+	public int CalculateCrit(int levelOther)
+	{
+		return (data.attributes["dexterity"].GetValue() - 2 - 2 * levelOther);
+	}
+
+	public int GetDamage(int otherLevel)
+	{
+		int wpnDamage;
+		Weapon wpn = (Weapon)inventory.equipment[EquipLocation.Hands];
+		if (wpn != null)
+		{
+			wpnDamage = wpn.damage;
+		}
+		else
+		{
+			wpnDamage = data.baseDamage;
+		}
+
+		return (int)((wpnDamage + data.attributes["strength"].GetValue()));
+	}
+	protected virtual int CalculateDamage(Character other)
     {
-        int wpnDamage;
-        float critMult = 1f;
-        Weapon wpn = (Weapon)inventory.equipment[EquipLocation.Hands];
-        if (wpn != null)
-        {
-            wpnDamage = wpn.damage;
-        }
-        else
-        {
-            wpnDamage = data.baseDamage;
-        }
+		int dmg =  GetDamage(other.data.level);
+		int critMult = 1;
+		int rng = (int)Random.Range(0, 100);
 
-        int rng = (int) Random.Range(0, 100);
+		// 2: Attribute base - 1 - 2, 2: Depends on attribute points per level
+		if (rng < 10 * CalculateCrit(other.data.level))
+		{
+			Debug.Log("CRIT!");
+			critMult = 2;
+		}
 
-        // 2: Attribute base - 1 - 2, 2: Depends on attribute points per level
-        if (rng < 10 * (data.attributes["dexterity"].GetValue() - 2 - 2 * other.data.level))
-        {
-            Debug.Log("CRIT!");
-            critMult = 2f;
-        }
+		return dmg * critMult;
+	}
+	
+	public float GetAttackSpeed()
+	{
+		float wpnSpeed;
+		Weapon wpn = (Weapon)inventory.equipment[EquipLocation.Hands];
+		if (wpn != null)
+		{
+			wpnSpeed = wpn.speed;
+		}
+		else
+		{
+			wpnSpeed = data.baseSpeed;
+		}
 
-        return (int) ((wpnDamage + data.attributes["strength"].GetValue()) * critMult);
-    }
+		return 10f / (wpnSpeed + data.attributes["dexterity"].GetValue());
+	}
 
     protected virtual float CalculateAttackSpeed()
     {
-        float wpnSpeed;
-        Weapon wpn = (Weapon)inventory.equipment[EquipLocation.Hands];
-        if (wpn != null)
-        {
-            wpnSpeed = wpn.speed;
-        }
-        else
-        {
-            wpnSpeed = data.baseSpeed;
-        }
-
-        return 10f / (wpnSpeed + data.attributes["dexterity"].GetValue());
+		return GetAttackSpeed();
     }
 
     protected virtual int ReducedDamage (int damage, DamageType dmgType = DamageType.None)

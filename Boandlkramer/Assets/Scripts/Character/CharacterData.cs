@@ -43,6 +43,8 @@ public class CharacterData {
 
 	}
 
+
+
     // for UI
 	public int GetCurrentExperiencePoints()
 	{

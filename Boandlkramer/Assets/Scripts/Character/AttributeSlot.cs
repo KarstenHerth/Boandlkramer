@@ -32,12 +32,12 @@ public class AttributeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField]
     GameObject player;
 
-    //CharacterData charData;
+    Character character;
 
     void Start()
     {
-        // safe character data for quick access
-        //charData = player.GetComponent<Character>().data;
+        // safe character for quick access
+        character = player.GetComponent<Character>();
 
     }
 
@@ -50,13 +50,34 @@ public class AttributeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             // show info box
             infoCanvas.SetActive(true);
 
-            // fill item data
-            textAttributeName.GetComponent<TextMeshProUGUI>().text = attribute.Remove(1).ToUpper() + attribute.Substring(1);
-            textDescription.GetComponent<TextMeshProUGUI>().text = description;
+			// fill item data
+			textAttributeName.GetComponent<TextMeshProUGUI>().text = attribute.Remove(1).ToUpper() + attribute.Substring(1);
+			textDescription.GetComponent<TextMeshProUGUI>().text = description;
 
+			// fill in information on how the current value of the attribute influences stats of the player
+			switch (attribute)
+			{
+				case "dexterity":
+					float critChance = character.CalculateCrit(character.data.level);
+					float attackSpeed = character.GetAttackSpeed();
+					textEffect.GetComponent<TextMeshProUGUI>().text = "Critical hit chance: " + critChance + "% \n"
+						+ "Melee attack speed: " + attackSpeed.ToString().Remove(3);
+					break;
 
-            // adjust info box position
-            Vector3 pos = transform.position;
+				case "strength":
+					float damage = character.GetDamage(character.data.level);
+					textEffect.GetComponent<TextMeshProUGUI>().text = "Base melee damage: " + damage;
+					break;
+
+				case "vitality":
+					break;
+
+				case "intelligence":
+					break;
+			}
+
+			// adjust info box position
+			Vector3 pos = transform.position;
             pos.x += GetComponent<RectTransform>().rect.width / 2;
             pos.y += GetComponent<RectTransform>().rect.height / 2 + infoCanvas.GetComponent<RectTransform>().rect.height;
 
@@ -71,5 +92,7 @@ public class AttributeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         // hide description of item
         infoCanvas.SetActive(false);
     }
+
+
 
 }
