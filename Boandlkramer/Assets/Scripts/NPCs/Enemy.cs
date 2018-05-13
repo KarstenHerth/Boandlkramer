@@ -53,6 +53,8 @@ public class Enemy : Character {
 
 	void Update()
 	{
+        UpdateMagicEffects();
+
 		if (bHighlighted)
 		{
 			//highlightGraphic.transform.localScale = transform.localScale;

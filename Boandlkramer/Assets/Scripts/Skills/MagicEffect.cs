@@ -14,5 +14,5 @@ public class MagicEffect : ScriptableObject {
 	public float damageMultiplier = 1f;
 	public int damageOverTime = 0;
 
-	// public ParticleSystem particleEffect;
+    public GameObject meshModifier;
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.AI;
 using System;
 
 public class Character : MonoBehaviour {
@@ -36,12 +37,21 @@ public class Character : MonoBehaviour {
 	float[] magicEffectTimer;
 	MagicEffect[] magicEffects;
 
+    NavMeshAgent agent;
+
+    // movement values
+    public float speed = .8f;
+    public float angularSpeed = 200f;
+    public float acceleration = 10f;
+
+
 	void Awake()
 	{
 		// create timers according to the maximal number of active effects on this character
 		magicEffectTimer = new float[maximalActiveEffects];
 		magicEffects = new MagicEffect[maximalActiveEffects];
-	}
+        agent = GetComponentInParent<NavMeshAgent>();
+    }
 
 
     void Start()
@@ -90,24 +100,68 @@ public class Character : MonoBehaviour {
 			Debug.Log("Added Effect to " + this.name);
 			magicEffectTimer[index] = magicEffect.totalTime;
 			magicEffects[index] = magicEffect;
-		}
+
+            // add mesh effect
+            var effectInstance = Instantiate(magicEffect.meshModifier);
+            effectInstance.name = magicEffect.meshModifier.name;
+            effectInstance.transform.parent = this.gameObject.transform;
+            effectInstance.transform.localPosition = Vector3.zero;
+            effectInstance.transform.localRotation = new Quaternion();
+            var meshUpdater = effectInstance.GetComponent<PSMeshRendererUpdater>();
+            meshUpdater.UpdateMeshEffect(this.gameObject);
+
+        }
 	}
 
 	void Update()
 	{
-		// update magic effects timers and apply over time effects
-		for (int i = 0; i < magicEffectTimer.Length; i++)
-		{
-			if (magicEffectTimer[i] > 0f)
-			{
-				magicEffectTimer[i] -= Time.deltaTime;
-				Debug.Log("Magic Effect " + magicEffects[i].name + " active on " + this.name + ". Remaining time: " + magicEffectTimer[i]);
-			}
-		}
-
+        UpdateMagicEffects();
 	}
 
-	public void SecondaryAttack(Vector3 target, Character other)
+    protected virtual void UpdateMagicEffects()
+    {
+        // update magic effects timers and apply over time effects
+        for (int i = 0; i < magicEffectTimer.Length; i++)
+        {
+            if (magicEffectTimer[i] > 0f)
+            {
+                // Apply magic effect
+                ApplyEffect(magicEffects[i]);
+
+                magicEffectTimer[i] -= Time.deltaTime;
+
+                if (magicEffectTimer[i] <= 0f)
+                {
+                    // remove mesh effect and restore all values if time is over
+                    GameObject effect = transform.Find(magicEffects[i].meshModifier.name).gameObject;
+                    if (effect)
+                    {
+                        Destroy(effect);
+                    }
+
+
+                    // restore speed values
+                    agent.speed = speed;
+                    agent.angularSpeed = angularSpeed;
+                    agent.acceleration = acceleration;
+
+
+                }
+            }
+        }
+
+    }
+
+    void ApplyEffect(MagicEffect effect)
+    {
+        // change movement speed
+        agent.speed = speed * effect.movementMultiplier;
+        agent.angularSpeed = angularSpeed * effect.movementMultiplier;
+        agent.acceleration = acceleration * effect.movementMultiplier;
+    }
+
+
+    public void SecondaryAttack(Vector3 target, Character other)
     {
 		if (canCast) {
 			if (other != null) {

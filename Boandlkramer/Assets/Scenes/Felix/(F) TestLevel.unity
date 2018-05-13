@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -178,11 +178,6 @@ Prefab:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1698004351}
-    - target: {fileID: 114583425018159614, guid: 9fa0ac47407850d4c900662ecdaf2990,
-        type: 2}
-      propertyPath: max_effects
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9fa0ac47407850d4c900662ecdaf2990, type: 2}
   m_IsPrefabParent: 0
@@ -254,6 +249,11 @@ Prefab:
     - target: {fileID: 4799996042759070, guid: 31587a93aeaf8c74fae4b0c976c231a6, type: 2}
       propertyPath: m_LocalScale.y
       value: 0.19999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 108399705902216400, guid: 31587a93aeaf8c74fae4b0c976c231a6,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 31587a93aeaf8c74fae4b0c976c231a6, type: 2}
@@ -1887,6 +1887,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 390597428}
     m_Modifications:
+    - target: {fileID: 23983367550899092, guid: a39735bb2b6f740469e534ef97e94e70,
+        type: 2}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4962250908492740, guid: a39735bb2b6f740469e534ef97e94e70, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0.487455
@@ -1927,6 +1932,19 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4300368765800234, guid: a39735bb2b6f740469e534ef97e94e70, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392269393669720, guid: a39735bb2b6f740469e534ef97e94e70, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 23983367550899092, guid: a39735bb2b6f740469e534ef97e94e70,
+        type: 2}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: c45bd59c9989c7446a8a7ab82fb62fca, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a39735bb2b6f740469e534ef97e94e70, type: 2}
   m_IsPrefabParent: 0
