@@ -15,7 +15,7 @@ MonoBehaviour:
   description: 
   manaCost: 10
   character: {fileID: 0}
-  damage: 5
+  damage: 15
   dmgType: 4
   range: 1
   speed: 3

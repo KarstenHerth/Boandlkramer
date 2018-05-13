@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class Character : MonoBehaviour {
 
@@ -10,6 +11,7 @@ public class Character : MonoBehaviour {
 	GameObject ui;
 	[SerializeField]
 	TextMeshPro text;
+
 
 	public GameObject castPoint;
 
@@ -28,6 +30,19 @@ public class Character : MonoBehaviour {
 
 	// skill that is active right now
 	public Skill activeSkill;
+
+	// for active magic effects
+	public int maximalActiveEffects = 3;
+	float[] magicEffectTimer;
+	MagicEffect[] magicEffects;
+
+	void Awake()
+	{
+		// create timers according to the maximal number of active effects on this character
+		magicEffectTimer = new float[maximalActiveEffects];
+		magicEffects = new MagicEffect[maximalActiveEffects];
+	}
+
 
     void Start()
     {
@@ -55,7 +70,44 @@ public class Character : MonoBehaviour {
 		}
 	}
 
-    public void SecondaryAttack(Vector3 target, Character other)
+	public void AddMagicEffect(MagicEffect magicEffect)
+	{
+		Debug.Log("Trying to add magic effect to " + this.name);
+		// check if a magic effect slot is available
+		int index = -1;
+		for (int i = 0; i < magicEffectTimer.Length; i++)
+		{
+			if (magicEffectTimer[i] <= 0f)
+			{
+				index = i;
+				break;
+			}
+		}
+
+		// we can add a new magic effect to this character
+		if (index >= 0)
+		{
+			Debug.Log("Added Effect to " + this.name);
+			magicEffectTimer[index] = magicEffect.totalTime;
+			magicEffects[index] = magicEffect;
+		}
+	}
+
+	void Update()
+	{
+		// update magic effects timers and apply over time effects
+		for (int i = 0; i < magicEffectTimer.Length; i++)
+		{
+			if (magicEffectTimer[i] > 0f)
+			{
+				magicEffectTimer[i] -= Time.deltaTime;
+				Debug.Log("Magic Effect " + magicEffects[i].name + " active on " + this.name + ". Remaining time: " + magicEffectTimer[i]);
+			}
+		}
+
+	}
+
+	public void SecondaryAttack(Vector3 target, Character other)
     {
 		if (canCast) {
 			if (other != null) {
@@ -115,7 +167,7 @@ public class Character : MonoBehaviour {
     {
 		int dmg =  GetDamage(other.data.level);
 		int critMult = 1;
-		int rng = (int)Random.Range(0, 100);
+		int rng = (int)UnityEngine.Random.Range(0, 100);
 
 		// 2: Attribute base - 1 - 2, 2: Depends on attribute points per level
 		if (rng < 10 * CalculateCrit(other.data.level))

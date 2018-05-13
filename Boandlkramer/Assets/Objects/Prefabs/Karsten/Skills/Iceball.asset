@@ -15,9 +15,10 @@ MonoBehaviour:
   description: 
   manaCost: 10
   character: {fileID: 0}
-  damage: 20
+  magicEffect: {fileID: 11400000, guid: 06f25c3daab256a42ac8dfa441f61b4c, type: 2}
+  damage: 8
   dmgType: 5
   range: 1
   speed: 5
-  AOERange: 1
+  AOERange: 0.2
   projectile: {fileID: 1692505900838240, guid: ae36e044f4938414e871acf60ed17299, type: 2}

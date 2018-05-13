@@ -34,6 +34,7 @@ public class AttributeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     Character character;
 
+
     void Start()
     {
         // safe character for quick access
@@ -58,8 +59,8 @@ public class AttributeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 			switch (attribute)
 			{
 				case "dexterity":
-					float critChance = character.CalculateCrit(character.data.level);
-					float attackSpeed = character.GetAttackSpeed();
+					float critChance = Mathf.Max(character.CalculateCrit(character.data.level), 0f);
+					float attackSpeed = Mathf.Max(character.GetAttackSpeed(), 0f);
 					textEffect.GetComponent<TextMeshProUGUI>().text = "Critical hit chance: " + critChance + "% \n"
 						+ "Melee attack speed: " + attackSpeed.ToString().Remove(3);
 					break;
@@ -70,16 +71,18 @@ public class AttributeSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 					break;
 
 				case "vitality":
+					textEffect.GetComponent<TextMeshProUGUI>().text = "";
 					break;
 
 				case "intelligence":
+					textEffect.GetComponent<TextMeshProUGUI>().text = "";
 					break;
 			}
 
 			// adjust info box position
 			Vector3 pos = transform.position;
             pos.x += GetComponent<RectTransform>().rect.width / 2;
-            pos.y += GetComponent<RectTransform>().rect.height / 2 + infoCanvas.GetComponent<RectTransform>().rect.height;
+            pos.y += GetComponent<RectTransform>().rect.height / 2 + 1.1f * infoCanvas.GetComponent<RectTransform>().rect.height;
 
             infoCanvas.transform.position = pos;
 

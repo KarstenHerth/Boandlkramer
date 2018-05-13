@@ -35,12 +35,23 @@ public class CharacterUI : MonoBehaviour
 	[SerializeField]
 	GameObject infoCanvas;
 
+	[SerializeField]
+	GameObject textAttributeName;
+
+	[SerializeField]
+	GameObject textDescription;
+
+	[SerializeField]
+	GameObject textEffect;
+
 	CharacterData charData;
+	Character character;
 
 	void Start()
 	{
 		// safe character data for quick access
 		charData = player.GetComponent<Character>().data;
+		character = player.GetComponent<Character>();
 
 		UpdateCharacterUI();
 	}
@@ -74,7 +85,32 @@ public class CharacterUI : MonoBehaviour
     {
         charData.SpendAttributePoint(attribute);
         UpdateCharacterUI();
-    }
+
+		// update info canvas
+		// fill in information on how the current value of the attribute influences stats of the player
+		switch (attribute)
+		{
+			case "dexterity":
+				float critChance = Mathf.Max(character.CalculateCrit(character.data.level), 0f);
+				float attackSpeed = Mathf.Max(character.GetAttackSpeed(), 0f);
+				textEffect.GetComponent<TextMeshProUGUI>().text = "Critical hit chance: " + critChance + "% \n"
+					+ "Melee attack speed: " + attackSpeed.ToString().Remove(3);
+				break;
+
+			case "strength":
+				float damage = character.GetDamage(character.data.level);
+				textEffect.GetComponent<TextMeshProUGUI>().text = "Base melee damage: " + damage;
+				break;
+
+			case "vitality":
+				textEffect.GetComponent<TextMeshProUGUI>().text = "";
+				break;
+
+			case "intelligence":
+				textEffect.GetComponent<TextMeshProUGUI>().text = "";
+				break;
+		}
+	}
 
 	public void UpdateCharacterUI()
 	{
@@ -142,5 +178,6 @@ public class CharacterUI : MonoBehaviour
                 btn.interactable = false;
             }
         }
+
 	}
 }
