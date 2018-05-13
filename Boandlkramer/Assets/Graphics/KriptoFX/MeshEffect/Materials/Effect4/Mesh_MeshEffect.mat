@@ -107,9 +107,9 @@ Material:
     - _CutoutColor: {r: 0, g: 0, b: 0, a: 1}
     - _FresnelColor: {r: 0.6102941, g: 0.7581136, b: 1, a: 1}
     - _HeightUVScrollDistort: {r: 0.01, g: -0.05, b: 0, a: 0}
-    - _MainColor: {r: 0.8308824, g: 0.8308824, b: 0.8308824, a: 1}
+    - _MainColor: {r: 0.6745283, g: 0.68506145, b: 1, a: 1}
     - _ReflectColor: {r: 0.6102941, g: 0.70973617, b: 1, a: 1}
     - _RimColor: {r: 0.5294118, g: 0.5294118, b: 0.5294118, a: 1}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
     - _Speed: {r: 0, g: 0, b: 0, a: 0}
-    - _TintColor: {r: 0.4852941, g: 0.5637931, b: 0.75, a: 0.13}
+    - _TintColor: {r: 0.8490566, g: 0.8490566, b: 0.8490566, a: 0.13}
