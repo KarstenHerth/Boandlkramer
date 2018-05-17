@@ -14,5 +14,7 @@ MonoBehaviour:
   totalTime: 5
   movementMultiplier: 0.5
   damageMultiplier: 1
-  damageOverTime: 0
+  baseDamageOverTime: 2
+  damageOverTimeTickRate: 1
+  damageOverTimeType: 0
   meshModifier: {fileID: 196572, guid: a027108eca869824e93bcef13617c227, type: 2}

@@ -12,7 +12,9 @@ public class MagicEffect : ScriptableObject {
 	// effect on different stats of the character
 	public float movementMultiplier = 1f;
 	public float damageMultiplier = 1f;
-	public int damageOverTime = 0;
+	public int baseDamageOverTime = 0;
+	public float damageOverTimeTickRate = 1.0f;
+	public DamageType damageOverTimeType = DamageType.None;
 
     public GameObject meshModifier;
 }

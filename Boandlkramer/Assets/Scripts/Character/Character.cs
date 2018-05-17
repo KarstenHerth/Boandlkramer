@@ -126,7 +126,7 @@ public class Character : MonoBehaviour {
             if (magicEffectTimer[i] > 0f)
             {
                 // Apply magic effect
-                ApplyEffect(magicEffects[i]);
+                ApplyEffect(magicEffects[i], i);
 
                 magicEffectTimer[i] -= Time.deltaTime;
 
@@ -152,12 +152,15 @@ public class Character : MonoBehaviour {
 
     }
 
-    void ApplyEffect(MagicEffect effect)
+    void ApplyEffect(MagicEffect effect, int timerID)
     {
         // change movement speed
         agent.speed = speed * effect.movementMultiplier;
         agent.angularSpeed = angularSpeed * effect.movementMultiplier;
         agent.acceleration = acceleration * effect.movementMultiplier;
+
+		// Add damage over time
+
     }
 
 
