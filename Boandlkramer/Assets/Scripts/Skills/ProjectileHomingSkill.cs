@@ -29,7 +29,7 @@ public class ProjectileHomingSkill : OffensiveSkill {
 			return false;
 
 		GameObject instance = Instantiate (projectile, character.castPoint.transform.position, Quaternion.FromToRotation (Vector3.forward, target - character.transform.position));
-		instance.GetComponent<HomingProjectile> ().Initialize (target_obj, speed, damage, dmgType);
+		instance.GetComponent<HomingProjectile> ().Initialize (target_obj, speed, damage, dmgType, magicEffect);
 
 		return true;
 	}

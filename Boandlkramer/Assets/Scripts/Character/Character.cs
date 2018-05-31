@@ -35,22 +35,31 @@ public class Character : MonoBehaviour {
 	// for active magic effects
 	public int maximalActiveEffects = 3;
 	float[] magicEffectTimer;
+	float[] damageOverTimeTimer;
 	MagicEffect[] magicEffects;
 
     NavMeshAgent agent;
 
     // movement values
-    public float speed = .8f;
-    public float angularSpeed = 200f;
-    public float acceleration = 10f;
+    float speed;
+    float angularSpeed;
+    float acceleration;
+
 
 
 	void Awake()
 	{
 		// create timers according to the maximal number of active effects on this character
 		magicEffectTimer = new float[maximalActiveEffects];
+		damageOverTimeTimer = new float[maximalActiveEffects];
 		magicEffects = new MagicEffect[maximalActiveEffects];
+
         agent = GetComponentInParent<NavMeshAgent>();
+
+		// save movement values in case they need to be restored
+		speed = agent.speed;
+		angularSpeed = agent.angularSpeed;
+		acceleration = agent.acceleration;
     }
 
 
@@ -99,6 +108,7 @@ public class Character : MonoBehaviour {
 		{
 			Debug.Log("Added Effect to " + this.name);
 			magicEffectTimer[index] = magicEffect.totalTime;
+			damageOverTimeTimer[index] = 0f;
 			magicEffects[index] = magicEffect;
 
             // add mesh effect
@@ -115,6 +125,7 @@ public class Character : MonoBehaviour {
 
 	void Update()
 	{
+		// damage over time etc. caused by magic spells
         UpdateMagicEffects();
 	}
 
@@ -125,27 +136,20 @@ public class Character : MonoBehaviour {
         {
             if (magicEffectTimer[i] > 0f)
             {
-                // Apply magic effect
-                ApplyEffect(magicEffects[i], i);
+				// time is running
+				magicEffectTimer[i] -= Time.deltaTime;
+				damageOverTimeTimer[i] += Time.deltaTime;
 
-                magicEffectTimer[i] -= Time.deltaTime;
-
-                if (magicEffectTimer[i] <= 0f)
-                {
-                    // remove mesh effect and restore all values if time is over
-                    GameObject effect = transform.Find(magicEffects[i].meshModifier.name).gameObject;
-                    if (effect)
-                    {
-                        Destroy(effect);
-                    }
+				// Apply magic effect
+				ApplyEffect(magicEffects[i], i);
 
 
-                    // restore speed values
-                    agent.speed = speed;
-                    agent.angularSpeed = angularSpeed;
-                    agent.acceleration = acceleration;
 
-
+				// if the effect has timed out, remove it from this character
+				if (magicEffectTimer[i] <= 0f)
+				{
+					RemoveEffect(magicEffects[i]);
+					damageOverTimeTimer[i] = 0f;
                 }
             }
         }
@@ -154,14 +158,43 @@ public class Character : MonoBehaviour {
 
     void ApplyEffect(MagicEffect effect, int timerID)
     {
-        // change movement speed
-        agent.speed = speed * effect.movementMultiplier;
-        agent.angularSpeed = angularSpeed * effect.movementMultiplier;
-        agent.acceleration = acceleration * effect.movementMultiplier;
+		
+		if (effect.movementMultiplier != 1.0f)
+		{
+			// change movement speed
+			agent.speed = speed * effect.movementMultiplier;
+			agent.angularSpeed = angularSpeed * effect.movementMultiplier;
+			agent.acceleration = acceleration * effect.movementMultiplier;
+		}
 
-		// Add damage over time
+		if (effect.baseDamageOverTime != 0f)
+		{
+			// Add damage over time: every damageOverTimeTickRate seconds we apply baseDamageOverTime damage to this character
+			if (damageOverTimeTimer[timerID] >= effect.damageOverTimeTickRate)
+			{
+				TakeDamage(effect.baseDamageOverTime, effect.damageOverTimeType);
+				damageOverTimeTimer[timerID] = 0f;
+			}
 
-    }
+		}
+	}
+
+
+	void RemoveEffect(MagicEffect effect)
+	{
+		// remove mesh effect and restore all values if time is over
+		GameObject _effect = transform.Find(effect.meshModifier.name).gameObject;
+		if (_effect)
+		{
+			Destroy(_effect);
+		}
+
+
+		// restore speed values
+		agent.speed = speed;
+		agent.angularSpeed = angularSpeed;
+		agent.acceleration = acceleration;
+	}
 
 
     public void SecondaryAttack(Vector3 target, Character other)

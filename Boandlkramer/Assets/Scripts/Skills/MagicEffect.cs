@@ -10,11 +10,11 @@ public class MagicEffect : ScriptableObject {
 	public float totalTime = 3f;
 
 	// effect on different stats of the character
-	public float movementMultiplier = 1f;
-	public float damageMultiplier = 1f;
-	public int baseDamageOverTime = 0;
+	public float movementMultiplier = 1f;							// affect movement speed values by this factor
+	public float damageMultiplier = 1f;								// affect damage values by this factor
+	public int baseDamageOverTime = 0;								// deal baseDamageOverTime per damageOverTimeTickRate
 	public float damageOverTimeTickRate = 1.0f;
-	public DamageType damageOverTimeType = DamageType.None;
+	public DamageType damageOverTimeType = DamageType.None;			// damage type for damage over time
 
-    public GameObject meshModifier;
+    public GameObject meshModifier;									// visual mesh effect while magic effect is active
 }

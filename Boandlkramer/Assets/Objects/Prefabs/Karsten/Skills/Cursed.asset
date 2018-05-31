@@ -9,13 +9,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e287b6f48dade5c408e50eb370de61a4, type: 3}
-  m_Name: Missile
+  m_Name: Cursed
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 5b32c2d36abe44540bed74c1f787033b, type: 3}
   description: 
   manaCost: 10
   character: {fileID: 0}
-  damage: 50
+  magicEffect: {fileID: 11400000, guid: 1646927e8b85fe64bb9ff040408c0464, type: 2}
+  damage: 2
   dmgType: 4
   range: 1
   speed: 7
