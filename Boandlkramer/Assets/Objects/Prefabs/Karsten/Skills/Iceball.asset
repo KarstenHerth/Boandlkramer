@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Iceball
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 52ae6826ced727540809d3b4fce7c332, type: 3}
-  description: 
+  description: 'This ice ball deals moderate damage but freezes any character which '
   manaCost: 10
   character: {fileID: 0}
   magicEffect: {fileID: 11400000, guid: 06f25c3daab256a42ac8dfa441f61b4c, type: 2}

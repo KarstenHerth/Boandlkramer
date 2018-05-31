@@ -27,6 +27,9 @@ public class SkillSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 	[SerializeField]
 	GameObject textDescription;
 
+	[SerializeField]
+	GameObject textManaCost;
+
 	// for drag and drop
 	[SerializeField]
 	GameObject dragObject;
@@ -89,7 +92,7 @@ public class SkillSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 			// adjust info box position
 			Vector3 pos = transform.position;
 			pos.x += GetComponent<RectTransform>().rect.width / 2;
-			pos.y += GetComponent<RectTransform>().rect.height / 2 + infoCanvas.GetComponent<RectTransform>().rect.height;
+			pos.y += GetComponent<RectTransform>().rect.height / 2 + 1.1f * infoCanvas.GetComponent<RectTransform>().rect.height;
 
 			infoCanvas.transform.position = pos;
 
@@ -102,6 +105,7 @@ public class SkillSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 		{
 			textSkillName.GetComponent<TextMeshProUGUI>().text = skillInSlot.name;
 			textDescription.GetComponent<TextMeshProUGUI>().text = skillInSlot.description;
+			textManaCost.GetComponent<TextMeshProUGUI>().text = "Mana cost: " + skillInSlot.manaCost.ToString() + "\n";
 		}
 
 

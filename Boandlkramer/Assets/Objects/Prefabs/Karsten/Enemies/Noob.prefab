@@ -160,10 +160,9 @@ MonoBehaviour:
   availableSkills: []
   activeSkill: {fileID: 0}
   maximalActiveEffects: 3
-  speed: 0.6
-  angularSpeed: 120
-  acceleration: 8
   enemyType: {fileID: 11400000, guid: f7e7b18159b609b4b81e0e8970558761, type: 2}
+  dyingEffect: {fileID: 198000011254678926, guid: abb9f519b142e304d9c45b56afa768bc,
+    type: 2}
   bHighlighted: 0
 --- !u!114 &114996404344096550
 MonoBehaviour:

@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0264d0b0e5eafd948b5fc388349c0d82, type: 3}
   m_Name: Noob
   m_EditorClassIdentifier: 
-  health: 20
+  health: 30
   mana: 10
   strength: 1
   dexterity: 2
@@ -23,7 +23,7 @@ MonoBehaviour:
   level: 1
   dropchance: 0.5
   incrementalDropchance: 0.2
-  maxDrops: 3
+  maxDrops: 2
   loot:
   - {fileID: 11400000, guid: f9ca5577207a7594baddd3ee169ebf43, type: 2}
   - {fileID: 11400000, guid: 640fce1d015af3846864e948e079c32d, type: 2}

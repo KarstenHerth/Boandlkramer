@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Name: Fireball
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 05c875ecf4684cf4eb8254b1d8ea4547, type: 3}
-  description: 
-  manaCost: 10
+  description: "A slow but powerful fire ball with area damage. Don\xB4t hurt yourself"
+  manaCost: 15
   character: {fileID: 0}
   magicEffect: {fileID: 0}
-  damage: 12
+  damage: 20
   dmgType: 4
   range: 1
   speed: 3

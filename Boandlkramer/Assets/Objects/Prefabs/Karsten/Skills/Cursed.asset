@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Cursed
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 5b32c2d36abe44540bed74c1f787033b, type: 3}
-  description: 
+  description: Cursed enemies take damage over time
   manaCost: 10
   character: {fileID: 0}
   magicEffect: {fileID: 11400000, guid: 1646927e8b85fe64bb9ff040408c0464, type: 2}
