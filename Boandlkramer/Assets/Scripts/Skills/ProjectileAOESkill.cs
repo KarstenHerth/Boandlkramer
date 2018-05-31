@@ -17,7 +17,7 @@ public class ProjectileAOESkill : OffensiveSkill {
 			return false;
 
 		GameObject instance = Instantiate (projectile, character.castPoint.transform.position, Quaternion.FromToRotation (Vector3.forward, target - character.transform.position));
-		instance.GetComponent<Projectile> ().Initialize (target, speed, damage, dmgType, AOERange);
+		instance.GetComponent<Projectile> ().Initialize (target, speed, damage, dmgType, AOERange, magicEffect);
 
 		return true;
 	}

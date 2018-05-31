@@ -85,7 +85,7 @@ public class SkillbarUI : MonoBehaviour {
 	// filling the skill slots with all skills currently available in the skillbook
 	public void FillSkillSlots()
 	{
-		Skill[] skills = Player.GetComponent<Character>().skillbook;
+		Skill[] skills = Player.GetComponent<Character>().availableSkills;
 		for (int i = 0; i < skills.Length; i++)
 		{
 			skillSlots[i].skillInSlot = skills[i];

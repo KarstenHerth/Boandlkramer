@@ -12,6 +12,8 @@ public class Projectile : MonoBehaviour {
 
 	SphereCollider targetCollider;
 
+	MagicEffect _magicEffect;
+
 	private void OnTriggerEnter (Collider collider)
 	{
 		if (collider == targetCollider)
@@ -21,11 +23,12 @@ public class Projectile : MonoBehaviour {
 		}
 	}
 
-	public void Initialize (Vector3 target, float speed, int damage, DamageType damageType, float rangeAOE)
+	public void Initialize (Vector3 target, float speed, int damage, DamageType damageType, float rangeAOE, MagicEffect magicEffect)
 	{
 		_dmg = damage;
 		_dmgType = damageType;
 		_range = rangeAOE;
+		_magicEffect = magicEffect;
 
 		//target.y = transform.position.y;
 		targetCollider = new GameObject ("Target").AddComponent<SphereCollider> ();
@@ -49,6 +52,13 @@ public class Projectile : MonoBehaviour {
 			if (collider.GetComponent<Character> () != null)
 			{
 				collider.GetComponent<Character> ().TakeDamage (_dmg, _dmgType);
+
+				// Add modifier with timer to enemies
+				if (_magicEffect)
+				{
+					collider.GetComponent<Character>().AddMagicEffect(_magicEffect);
+				}
+				
 			}
 		}
 

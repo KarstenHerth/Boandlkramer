@@ -32,8 +32,9 @@ public class Item : ScriptableObject
 
         GameObject go = new GameObject(name);
 	
-        go.transform.position = pos;
+        go.transform.position = new Vector3(pos.x, pos.y + .1f, pos.z);
         go.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+		go.AddComponent<Rotator>();
         go.layer = 8;
         MeshFilter mf = go.AddComponent<MeshFilter>();
         mf.mesh = mesh;

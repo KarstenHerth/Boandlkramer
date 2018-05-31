@@ -12,6 +12,8 @@ public class Skill : ScriptableObject {
 
     public Character character;
 
+	public MagicEffect magicEffect;
+
 	public virtual bool CastCheck (Vector3 target, GameObject target_obj) {
 		if (character.data.stats["mana"].Current < manaCost)
 			return false;

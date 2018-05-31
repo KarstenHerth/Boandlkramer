@@ -22,7 +22,7 @@ public class Pickup : Interactable {
 				if (item is Potion)
 					instance.GetComponentInChildren<TextMeshPro> ().text = "Potion";
 			}
-			DestroyObject (this.gameObject);
+			Destroy (this.gameObject);
         }
     }
 

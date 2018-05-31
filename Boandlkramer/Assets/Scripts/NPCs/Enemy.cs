@@ -11,6 +11,9 @@ public class Enemy : Character {
 	[SerializeField]
 	EnemyType enemyType;
 
+	[SerializeField]
+	ParticleSystem dyingEffect;
+
 
 	// graphic that is displayed when this enemy is focused by the player
 	GameObject highlightGraphic;
@@ -53,6 +56,8 @@ public class Enemy : Character {
 
 	void Update()
 	{
+        UpdateMagicEffects();
+
 		if (bHighlighted)
 		{
 			//highlightGraphic.transform.localScale = transform.localScale;
@@ -100,6 +105,13 @@ public class Enemy : Character {
 		bHighlighted = false;
 		highlightGraphic.transform.position = new Vector3(0f, -10f, 0f);
 
+		if (dyingEffect != null)
+		{
+			ParticleSystem go = Instantiate(dyingEffect, transform.position, transform.rotation);
+			//this.transform.parent = go.transform;
+			Destroy(go.gameObject, 2f);
+		}
+		Debug.Log("Test");
 		Destroy (gameObject);
 	}
 
@@ -109,7 +121,9 @@ public class Enemy : Character {
 		// drops random loot of loot list if the player is lucky
 		if (Random.Range(0, 100) < enemyType.dropchance * 100)
 		{
-			loot[Random.Range(0, loot.Length)].Spawn(transform.position, enemyType.level);
+			int itemNumber = Random.Range(0, loot.Length);
+			loot[itemNumber].Spawn(transform.position, enemyType.level);
+			Debug.Log("Dropped " + loot[itemNumber].name);
 
 			int num = 1;
 			while (Random.Range(0, 100) < enemyType.incrementalDropchance * 100 && num < enemyType.maxDrops)
