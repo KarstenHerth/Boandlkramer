@@ -26,7 +26,7 @@ public class Tile : MonoBehaviour {
 	public void ShowFloor (Tileset tileset) {
 		if (floor != null)
 			return;
-		floor = Instantiate (tileset.floor, transform.position, Quaternion.identity) as GameObject;
+		floor = Instantiate (tileset.GetFloor(), transform.position, Quaternion.identity) as GameObject;
 		floor.transform.SetParent (transform);
 	}
 

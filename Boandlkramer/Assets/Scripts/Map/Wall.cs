@@ -52,11 +52,11 @@ public class Wall : MonoBehaviour {
 			return;
 		switch (type) {
 			case WallType.Wall:
-				wall = Instantiate (tileset.wall, transform.position, transform.rotation) as GameObject;
+				wall = Instantiate (tileset.GetWall(), transform.position, transform.rotation) as GameObject;
 				wall.transform.SetParent (transform);
 				break;
 			case WallType.Door:
-				wall = Instantiate (tileset.door, transform.position, transform.rotation) as GameObject;
+				wall = Instantiate (tileset.GetDoor(), transform.position, transform.rotation) as GameObject;
 				wall.transform.SetParent (transform);
 				break;
 		}

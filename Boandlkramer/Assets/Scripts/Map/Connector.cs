@@ -23,7 +23,7 @@ public class Connector : MonoBehaviour {
 		if (column != null)
 			return;
 		if (type == ConnectorType.Shared) {
-			column = Instantiate (tileset.column, transform.position, transform.rotation) as GameObject;
+			column = Instantiate (tileset.GetColumn(), transform.position, transform.rotation) as GameObject;
 			column.transform.SetParent (transform);
 		}
 	}
