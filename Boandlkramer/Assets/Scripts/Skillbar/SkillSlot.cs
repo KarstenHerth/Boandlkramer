@@ -118,8 +118,7 @@ public class SkillSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 		if (infoCanvas != null)
 		{
 			infoCanvas.SetActive(false);
-			textSkillName.GetComponent<TextMeshProUGUI>().text = "Skill Name";
-			textDescription.GetComponent<TextMeshProUGUI>().text = "Description";
+
 		}
 
 		// not pointing at a skill slot anymore
