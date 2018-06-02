@@ -14,7 +14,6 @@ public class Enemy : Character {
 	[SerializeField]
 	ParticleSystem dyingEffect;
 
-
 	// graphic that is displayed when this enemy is focused by the player
 	GameObject highlightGraphic;
 
@@ -110,8 +109,14 @@ public class Enemy : Character {
 			ParticleSystem go = Instantiate(dyingEffect, transform.position, transform.rotation);
 			//this.transform.parent = go.transform;
 			Destroy(go.gameObject, 2f);
-		}
-		Debug.Log("Test");
+
+            // spawn blood decal
+            GameObject.FindGameObjectWithTag("blooddecalspawner").GetComponent<SpawnBloodDecals>().SpawnRandomBloodDecal(transform.position);
+        }
+
+
+
+        Debug.Log("Test");
 		Destroy (gameObject);
 	}
 
