@@ -689,7 +689,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1356891125606980
 GameObject:
   m_ObjectHideFlags: 1
@@ -5444,7 +5444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data:
-    level: 2
+    level: 1
     attributePointsPerLevel: 5
     perks: []
     baseDamage: 3
@@ -5469,9 +5469,6 @@ MonoBehaviour:
   - {fileID: 0}
   activeSkill: {fileID: 0}
   maximalActiveEffects: 3
-  speed: 0.8
-  angularSpeed: 200
-  acceleration: 10
 --- !u!114 &114596135707263650
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6080,11 +6077,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 20
-  items:
-  - {fileID: 0}
+  items: []
   gold: 0
   healthPotions: 0
-  manaPotions: 2
+  manaPotions: 0
   Player: {fileID: 4870474908883784}
   charUI: {fileID: 0}
   pickupUI: {fileID: 1612490890946086, guid: 949b6a4fd5c64394891471b43c37158c, type: 2}
