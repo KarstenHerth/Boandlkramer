@@ -7,7 +7,7 @@ using System;
 
 public class Character : MonoBehaviour {
 
-	public CharacterData data = new CharacterData ();
+	public CharacterData data;
 	[SerializeField]
 	GameObject ui;
 	[SerializeField]
@@ -22,6 +22,7 @@ public class Character : MonoBehaviour {
 
 	public bool canAttack = true;
 	public bool canCast = true;
+
 
 	// all skills the player may have
 	public Skill[] skillbook;
@@ -49,6 +50,8 @@ public class Character : MonoBehaviour {
 
 	void Awake()
 	{
+		data = new CharacterData(this);
+
 		// create timers according to the maximal number of active effects on this character
 		magicEffectTimer = new float[maximalActiveEffects];
 		damageOverTimeTimer = new float[maximalActiveEffects];
@@ -63,21 +66,37 @@ public class Character : MonoBehaviour {
     }
 
 
+
+
     void Start()
     {
+		UpdateAvailableSkills();
+       // activeSkill.character = this;
+        inventory = GetComponent<Inventory>();
+
+		FindObjectOfType<SkillbarUI>().FillSkillSlots();
+    }
+
+	public void UpdateSkillbook(Skill[] newSkillBook)
+	{
+		skillbook = newSkillBook;
+		UpdateAvailableSkills();
+	}
+
+	void UpdateAvailableSkills()
+	{
 		availableSkills = new Skill[skillbook.Length];
-		for (int i=0; i < skillbook.Length; i++)
+		for (int i = 0; i < skillbook.Length; i++)
 		{
 			availableSkills[i] = Instantiate(skillbook[i]);
 			availableSkills[i].name = skillbook[i].name;
 			availableSkills[i].character = this;
 		}
 		activeSkill = availableSkills[0];
-       // activeSkill.character = this;
-        inventory = GetComponent<Inventory>();
 
 		FindObjectOfType<SkillbarUI>().FillSkillSlots();
-    }
+
+	}
 
 	public void Attack (Character other) {
 

@@ -19,16 +19,16 @@ public class SkillSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 
 	// reference to the info panel to display
 	[SerializeField]
-	GameObject infoCanvas;
+	protected GameObject infoCanvas;
 
 	[SerializeField]
-	GameObject textSkillName;
+	protected GameObject textSkillName;
 
 	[SerializeField]
-	GameObject textDescription;
+	protected GameObject textDescription;
 
 	[SerializeField]
-	GameObject textManaCost;
+	protected GameObject textManaCost;
 
 	// for drag and drop
 	[SerializeField]
@@ -68,7 +68,7 @@ public class SkillSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 	}
 
 
-	public void OnPointerClick(PointerEventData eventData)
+	public virtual void OnPointerClick(PointerEventData eventData)
 	{
 		if (eventData.button == PointerEventData.InputButton.Left)
 		{
@@ -83,29 +83,29 @@ public class SkillSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 	}
 
 	// On Mouse over event for this slot
-	public void OnPointerEnter(PointerEventData eventData)
+	public virtual void OnPointerEnter(PointerEventData eventData)
 	{
 		// show info box
 		if (infoCanvas != null)
 		{
-			infoCanvas.SetActive(true);
-			// adjust info box position
-			Vector3 pos = transform.position;
-			pos.x += GetComponent<RectTransform>().rect.width / 2;
-			pos.y += GetComponent<RectTransform>().rect.height / 2 + 1.1f * infoCanvas.GetComponent<RectTransform>().rect.height;
+			// fill item data
+			if (skillInSlot != null && textSkillName != null && textDescription != null)
+			{
+				infoCanvas.SetActive(true);
+				// adjust info box position
+				Vector3 pos = transform.position;
+				pos.x += GetComponent<RectTransform>().rect.width / 2;
+				pos.y += GetComponent<RectTransform>().rect.height / 2 + 1.1f * infoCanvas.GetComponent<RectTransform>().rect.height;
 
-			infoCanvas.transform.position = pos;
+				infoCanvas.transform.position = pos;
 
-			// store slot we are hovering right now
-			currentHoverSlotIndex = index;
-		}
+				// store slot we are hovering right now
+				currentHoverSlotIndex = index;
 
-		// fill item data
-		if (skillInSlot != null && textSkillName != null && textDescription != null)
-		{
-			textSkillName.GetComponent<TextMeshProUGUI>().text = skillInSlot.name;
-			textDescription.GetComponent<TextMeshProUGUI>().text = skillInSlot.description;
-			textManaCost.GetComponent<TextMeshProUGUI>().text = "Mana cost: " + skillInSlot.manaCost.ToString() + "\n";
+				textSkillName.GetComponent<TextMeshProUGUI>().text = skillInSlot.name.Remove(skillInSlot.name.Length - 1) + " Level " + skillInSlot.skillLevel;
+				textDescription.GetComponent<TextMeshProUGUI>().text = skillInSlot.description;
+				textManaCost.GetComponent<TextMeshProUGUI>().text = "Mana cost: " + skillInSlot.manaCost.ToString() + "\n";
+			}
 		}
 
 

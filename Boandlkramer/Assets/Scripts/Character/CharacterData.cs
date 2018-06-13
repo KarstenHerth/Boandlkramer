@@ -5,10 +5,16 @@ using UnityEngine;
 [System.Serializable]
 public class CharacterData {
 
+	// owner of this character data
+	Character owner;
+
     public int level = 1;
 
     // Attribute points per level
     public int attributePointsPerLevel = 5;
+
+	// Skill points per level
+	public int skillPointsPerLevel = 1;
 
 	public Dictionary<string, Stat> stats;
 	public Dictionary<string, Attribute> attributes;
@@ -18,11 +24,15 @@ public class CharacterData {
     public float baseSpeed = 10f;
     public int baseArmor = 0;
 
+
     // current XP the character has
 	int experience = 0;
 
     // remaining attribute points to spend
     int remainingAttributePoints = 0;
+
+	// remaining skill points to spend
+	int remainingSkillPoints = 0;
 
     // for updating UI
     public CharacterUI charUI;
@@ -33,7 +43,8 @@ public class CharacterData {
 	// scaling for xp needed for level up
 	public int xpForLevelMultiplier = 50;
 
-	public CharacterData () {
+
+	public CharacterData (Character owningCharacter) {
 
         attributes = new Dictionary<string, Attribute>() { { "strength", new Attribute ()}, { "dexterity", new Attribute ()},
             { "vitality", new Attribute ()}, { "intelligence", new Attribute ()} };
@@ -41,8 +52,9 @@ public class CharacterData {
 			{ "mana", new Stat (100, attributes["intelligence"]) } };
 		perks = new List<Perk> ();
 
-	}
+		owner = owningCharacter;
 
+	}
 
 
     // for UI
@@ -72,6 +84,7 @@ public class CharacterData {
             stats["health"].Current = stats["health"].Max;
             stats["mana"].Current = stats["mana"].Max;
             remainingAttributePoints += attributePointsPerLevel;
+			remainingSkillPoints += skillPointsPerLevel;
 
             // this is for testing if we gained that much experience to level up more than one level
             IncreaseExperience(0);
@@ -87,6 +100,11 @@ public class CharacterData {
         return remainingAttributePoints;
     }
 
+	public int GetRemainingSkillPoints()
+	{
+		return remainingSkillPoints;
+	}
+
     // increases an attribute if possible
     public void SpendAttributePoint(string attribute)
     {
@@ -96,6 +114,32 @@ public class CharacterData {
             remainingAttributePoints--;
         }
     }
+
+
+	// increases level of a / learn new skill if possible
+	public bool SpendSkillPoint(Skill skill)
+	{
+		if (remainingSkillPoints > 0)
+		{
+			List<Skill> currentSkills = new List<Skill>(owner.skillbook);
+			if (currentSkills.Contains(skill))
+			{
+				// skill is already available, increase level if there is one with a higher level
+				if (skill.nextLevelSkill != null)
+				{
+					int index = currentSkills.IndexOf(skill);
+					currentSkills[index] = skill.nextLevelSkill;
+					owner.UpdateSkillbook(currentSkills.ToArray());
+					remainingSkillPoints--;
+
+					// we have successfully upgraded this skill
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
 
     // calculates the amount of XP this character "drops" if he dies
     public int XPDropping()

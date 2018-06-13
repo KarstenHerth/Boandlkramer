@@ -10,6 +10,10 @@ public class Skill : ScriptableObject {
 
 	public int manaCost = 10;
 
+	public int skillLevel = 1;
+	public string descriptionNextLevel;
+	public Skill nextLevelSkill;
+
     public Character character;
 
 	public MagicEffect magicEffect;
