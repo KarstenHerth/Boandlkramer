@@ -92,7 +92,10 @@ public class Character : MonoBehaviour {
 			availableSkills[i].name = skillbook[i].name;
 			availableSkills[i].character = this;
 		}
-		activeSkill = availableSkills[0];
+		if (activeSkill == null)
+		{
+			activeSkill = availableSkills[0];
+		}
 
 		FindObjectOfType<SkillbarUI>().FillSkillSlots();
 

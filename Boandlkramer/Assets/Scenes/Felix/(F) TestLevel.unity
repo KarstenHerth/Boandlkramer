@@ -2348,6 +2348,18 @@ Prefab:
       propertyPath: m_SizeDelta.y
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 114617072687328362, guid: c66e9173e4eb0e14b84af9e30999eaf4,
+        type: 2}
+      propertyPath: skillInSlot
+      value: 
+      objectReference: {fileID: 11400000, guid: fd739aa8d4b5f194ab9146d132e7bd17,
+        type: 2}
+    - target: {fileID: 114670601104716128, guid: c66e9173e4eb0e14b84af9e30999eaf4,
+        type: 2}
+      propertyPath: skillInSlot
+      value: 
+      objectReference: {fileID: 11400000, guid: 659ea37bfd0884a4892d6c8116554deb,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c66e9173e4eb0e14b84af9e30999eaf4, type: 2}
   m_IsPrefabParent: 0

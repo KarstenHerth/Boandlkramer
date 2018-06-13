@@ -9,17 +9,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e287b6f48dade5c408e50eb370de61a4, type: 3}
-  m_Name: Cursed1
+  m_Name: Cursed2
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 5b32c2d36abe44540bed74c1f787033b, type: 3}
   description: Cursed enemies take damage over time
-  manaCost: 10
-  skillLevel: 1
-  descriptionNextLevel: 'Instant damage: 5, Mana cost: 15'
-  nextLevelSkill: {fileID: 11400000, guid: 8e8a5513da7b8a9449f690d3617fcada, type: 2}
+  manaCost: 15
+  skillLevel: 2
+  descriptionNextLevel: 
+  nextLevelSkill: {fileID: 0}
   character: {fileID: 0}
   magicEffect: {fileID: 11400000, guid: 1646927e8b85fe64bb9ff040408c0464, type: 2}
-  damage: 0
+  damage: 5
   dmgType: 4
   range: 1
   speed: 7
