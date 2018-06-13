@@ -247,9 +247,13 @@ public class Character : MonoBehaviour {
 
 		data.stats["health"].Current -= rd;
 
-		if (data.stats["health"].Current <= 0)
-			Death ();
-	}
+        if (data.stats["health"].Current <= 0)
+        {
+            Death();
+            if (GetComponent<BoandlAnimation>() != null)
+                GetComponent<BoandlAnimation>().Trigger("Death");
+        }
+    }
 
 	// Calculates the chance for a critical hit of this character on a character of level "levelOther"
 	public int CalculateCrit(int levelOther)
