@@ -16,7 +16,16 @@ public class SkilltreeUI : MonoBehaviour {
 		// toggle visibility of inventory
 		if (Input.GetButtonDown("Skilltree"))
 		{
-			skilltreeUI.SetActive(!skilltreeUI.activeSelf);
+			if (skilltreeUI.activeSelf)
+			{
+				skilltreeUI.GetComponent<Canvas>().sortingOrder = 0;
+				skilltreeUI.SetActive(false);
+			}
+			else
+			{
+				skilltreeUI.SetActive(true);
+				skilltreeUI.GetComponent<Canvas>().sortingOrder = UICanvasSorting.sorting++;
+			}
 		}
 	}
 }

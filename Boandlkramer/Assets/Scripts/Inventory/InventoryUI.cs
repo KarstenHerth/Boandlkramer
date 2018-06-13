@@ -42,7 +42,16 @@ public class InventoryUI : MonoBehaviour {
         // toggle visibility of inventory
         if (Input.GetButtonDown("Inventory"))
         {
-            inventoryUI.SetActive(!inventoryUI.activeSelf);
+			if (inventoryUI.activeSelf)
+			{
+				inventoryUI.GetComponent<Canvas>().sortingOrder = 0;
+				inventoryUI.SetActive(false);
+			}
+			else
+			{
+				inventoryUI.SetActive(true);
+				inventoryUI.GetComponent<Canvas>().sortingOrder = UICanvasSorting.sorting++;
+			}
         }
 
     }

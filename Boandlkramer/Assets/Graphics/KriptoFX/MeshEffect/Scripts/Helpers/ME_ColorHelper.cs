@@ -136,15 +136,21 @@ public static class ME_ColorHelper
     public static void ChangeObjectColorByHUE(GameObject go, float hue)
     {
         var renderers = go.GetComponentsInChildren<Renderer>(true);
+
         foreach (var rend in renderers)
         {
-            var mats = rend.materials;
-            if (mats.Length == 0)
-                continue;
+            var mats = rend.sharedMaterials;
+			if (mats.Length == 0)
+			{
+				continue;
+			}
+
             foreach (var colorProperty in colorProperties)
             {
                 foreach (var mat in mats)
                 {
+					if (mat == null)
+						continue;
                     if (mat.HasProperty(colorProperty))
                     {
                         setMatHUEColor(mat, colorProperty, hue);

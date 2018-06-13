@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine;
 
-public class DragDropWindow : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class DragDropWindow : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
 
     [SerializeField]
@@ -26,8 +26,9 @@ public class DragDropWindow : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-
-    }
+		// Set ordering to top when dragging / clicking a window
+		GetComponentInParent<Canvas>().sortingOrder = UICanvasSorting.sorting++;
+	}
 
 
 
@@ -46,4 +47,10 @@ public class DragDropWindow : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
 
     }
+
+	public void OnPointerClick(PointerEventData eventData)
+	{
+		// Set ordering to top when dragging / clicking a window
+		GetComponentInParent<Canvas>().sortingOrder = UICanvasSorting.sorting++;
+	}
 }

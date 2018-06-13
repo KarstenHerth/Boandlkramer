@@ -63,10 +63,19 @@ public class CharacterUI : MonoBehaviour
 		// toggle visibility of inventory
 		if (Input.GetButtonDown("Character"))
 		{
-			characterUI.SetActive(!characterUI.activeSelf);
+			if (characterUI.activeSelf)
+			{
+				characterUI.GetComponent<Canvas>().sortingOrder = 0;
+				characterUI.SetActive(false);
+			}
+			else
+			{
+				characterUI.SetActive(true);
+				characterUI.GetComponent<Canvas>().sortingOrder = UICanvasSorting.sorting++;
+			}
 
 			// hide info canvas if window was closed
-			if(!characterUI.activeSelf)
+			if (!characterUI.activeSelf)
 			{
 				infoCanvas.transform.position = new Vector2(-200f, -200f);
 				infoCanvas.SetActive(false);

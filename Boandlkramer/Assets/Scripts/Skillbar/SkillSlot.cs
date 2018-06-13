@@ -32,7 +32,7 @@ public class SkillSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 
 	// for drag and drop
 	[SerializeField]
-	GameObject dragObject;
+	private GameObject dragObject;
 
 	// slot that is being dragged. -1 if not dragging anything
 	public static int dragSlotIndex = -1;
@@ -126,7 +126,7 @@ public class SkillSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 	}
 
 
-	public void OnBeginDrag(PointerEventData eventData)
+	public virtual void OnBeginDrag(PointerEventData eventData)
 	{
 		// use image for the spell stored in this slot
 		dragObject.SetActive(true);
@@ -137,16 +137,14 @@ public class SkillSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 
 
 
-	public void OnDrag(PointerEventData eventData)
+	public virtual void OnDrag(PointerEventData eventData)
 	{
-
 		dragObject.transform.position = eventData.position;
-
 	}
 
 
 
-	public void OnEndDrag(PointerEventData eventData)
+	public virtual void OnEndDrag(PointerEventData eventData)
 	{
 
 		if (currentHoverSlotIndex > -1)
