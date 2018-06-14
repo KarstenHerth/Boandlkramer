@@ -52,3 +52,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skilltreeUI: {fileID: 0}
+  player: {fileID: 0}
+  textPoints: {fileID: 0}

@@ -59,8 +59,9 @@ GameObject:
   m_Component:
   - component: {fileID: 224883355982083980}
   - component: {fileID: 222348503069962934}
-  - component: {fileID: 223018329351421422}
   - component: {fileID: 114679052136368224}
+  - component: {fileID: 223906969205293436}
+  - component: {fileID: 114210090300592560}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -1519,8 +1520,9 @@ GameObject:
   - component: {fileID: 224786374611927688}
   - component: {fileID: 222834904642514318}
   - component: {fileID: 114386903625462324}
-  - component: {fileID: 223266249995493300}
   - component: {fileID: 114038434424018196}
+  - component: {fileID: 223003476052962784}
+  - component: {fileID: 114876403728059762}
   m_Layer: 5
   m_Name: Character Info
   m_TagString: Untagged
@@ -7849,6 +7851,22 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: +
+--- !u!114 &114210090300592560
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1011344540387688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!114 &114217643617192550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13402,7 +13420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  skillInSlot: {fileID: 0}
+  skillInSlot: {fileID: 11400000, guid: fd739aa8d4b5f194ab9146d132e7bd17, type: 2}
   index: 0
   infoCanvas: {fileID: 1097187691596352}
   textSkillName: {fileID: 1270116576652440}
@@ -13899,7 +13917,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  skillInSlot: {fileID: 0}
+  skillInSlot: {fileID: 11400000, guid: 659ea37bfd0884a4892d6c8116554deb, type: 2}
   index: 0
   infoCanvas: {fileID: 1097187691596352}
   textSkillName: {fileID: 1270116576652440}
@@ -16871,6 +16889,22 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114876403728059762
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1304840956379820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!114 &114877165578188090
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -19793,12 +19827,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1147142126781120}
---- !u!223 &223018329351421422
+--- !u!223 &223003476052962784
 Canvas:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1011344540387688}
+  m_GameObject: {fileID: 1304840956379820}
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
@@ -19822,26 +19856,6 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
---- !u!223 &223266249995493300
-Canvas:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1304840956379820}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -19870,6 +19884,26 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!223 &223906969205293436
+Canvas:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1011344540387688}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
