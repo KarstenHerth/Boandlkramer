@@ -80,6 +80,9 @@ public class CharacterData {
         // adjust the level
 		if (experience >= CalculateExperienceForLevel(level + 1))
 		{
+			// play a sound
+			owner.audioManager.Play("LevelUp");
+
 			level++;
             stats["health"].Current = stats["health"].Max;
             stats["mana"].Current = stats["mana"].Max;

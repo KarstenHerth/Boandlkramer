@@ -1,17 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class SkilltreeUI : MonoBehaviour {
 
 	public GameObject skilltreeUI;
 
+	public GameObject[] slotParents;
+
 	// reference to the player object
 	public GameObject player;
 
 	CharacterData charData;
-	Character character;
+	// Character character;
 
 	public TextMeshProUGUI textPoints;
 
@@ -19,7 +22,7 @@ public class SkilltreeUI : MonoBehaviour {
 	{
 		// safe character data for quick access
 		charData = player.GetComponent<Character>().data;
-		character = player.GetComponent<Character>();
+		// character = player.GetComponent<Character>();
 
 	}
 
@@ -53,5 +56,24 @@ public class SkilltreeUI : MonoBehaviour {
 	{
 		int remaining = charData.GetRemainingSkillPoints();
 		textPoints.text = remaining.ToString();
+
+		foreach (var parent in slotParents)
+		{
+			SkilltreeSlot[] slots = parent.GetComponentsInChildren<SkilltreeSlot>();
+			foreach (var slot in slots)
+			{
+				Image img = slot.GetComponentsInChildren<Image>()[1];
+
+				if (remaining > 0)
+				{
+					img.color = new Color(1f, 1f, 1f, 1f);
+				}
+				else
+				{
+					img.color = new Color(1f, 1f, 1f, .3f);
+				}
+
+			}
+		}
 	}
 }

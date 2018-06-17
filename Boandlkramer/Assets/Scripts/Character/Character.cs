@@ -13,6 +13,8 @@ public class Character : MonoBehaviour {
 	[SerializeField]
 	TextMeshPro text;
 
+	public AudioManager audioManager;
+
 
 	public GameObject castPoint;
 
@@ -63,6 +65,7 @@ public class Character : MonoBehaviour {
 		speed = agent.speed;
 		angularSpeed = agent.angularSpeed;
 		acceleration = agent.acceleration;
+
     }
 
 
