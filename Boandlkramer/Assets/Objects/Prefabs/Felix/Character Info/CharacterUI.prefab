@@ -67,3 +67,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   infoCanvas: {fileID: 0}
+  textAttributeName: {fileID: 0}
+  textDescription: {fileID: 0}
+  textEffect: {fileID: 0}

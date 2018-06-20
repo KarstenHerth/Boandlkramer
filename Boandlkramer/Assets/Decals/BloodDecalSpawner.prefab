@@ -52,4 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bloodDecals:
-  - {fileID: 1219726831845170, guid: 6e401a3724b5e6f4a9824dbd124c48e9, type: 2}
+  - {fileID: 1219726831845170, guid: a139ad13e2093fa43998a69363b420c5, type: 2}
+  - {fileID: 1219726831845170, guid: b3011d1af5c8f2749addc07fd4a9073e, type: 2}
+  - {fileID: 1219726831845170, guid: 8c809ec685cafcc41b59786d458228a1, type: 2}
+  - {fileID: 1219726831845170, guid: f9d2b1690a4621d42a5d6bb0ba47134a, type: 2}
