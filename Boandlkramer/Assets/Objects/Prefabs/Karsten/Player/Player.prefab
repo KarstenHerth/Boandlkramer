@@ -5457,6 +5457,9 @@ MonoBehaviour:
   ui: {fileID: 1352540900167952}
   text: {fileID: 114100534705493256, guid: 8c67aa0d55bd26346ba11ed18587954a, type: 2}
   audioManager: {fileID: 0}
+  levelUpUI: {fileID: 0}
+  levelUpParticle: {fileID: 1387468324573612, guid: 5a0ef5b9e7621d948b89aab023985ff8,
+    type: 2}
   castPoint: {fileID: 1741738793539230}
   charactersGainingXPFromThisCharacter: []
   canAttack: 1

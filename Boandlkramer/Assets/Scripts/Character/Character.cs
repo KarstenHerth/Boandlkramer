@@ -1,9 +1,8 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.AI;
-using System;
+using UnityEngine.UI;
 
 public class Character : MonoBehaviour {
 
@@ -13,7 +12,12 @@ public class Character : MonoBehaviour {
 	[SerializeField]
 	TextMeshPro text;
 
+	// playing sounds (level up etc.)
 	public AudioManager audioManager;
+
+	// shown at level up
+	public GameObject levelUpUI;
+	public GameObject levelUpParticle;
 
 
 	public GameObject castPoint;

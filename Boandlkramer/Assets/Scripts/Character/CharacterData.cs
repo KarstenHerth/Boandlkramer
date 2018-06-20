@@ -1,6 +1,7 @@
 ﻿
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 [System.Serializable]
 public class CharacterData {
@@ -83,6 +84,7 @@ public class CharacterData {
 			// play a sound
 			owner.audioManager.Play("LevelUp");
 
+			// increase level, add attribute / skill points and restore health / mana
 			level++;
             stats["health"].Current = stats["health"].Max;
             stats["mana"].Current = stats["mana"].Max;
@@ -91,6 +93,14 @@ public class CharacterData {
 
             // this is for testing if we gained that much experience to level up more than one level
             IncreaseExperience(0);
+
+			// show level up UI
+			owner.levelUpUI.SetActive(true);
+			owner.levelUpUI.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "~ Level " + level.ToString() + " ~";
+			owner.levelUpUI.GetComponent<FadeOut>().Fade(2f);
+			GameObject go = GameObject.Instantiate(owner.levelUpParticle, owner.gameObject.transform);
+			go.GetComponent<ParticleSystem>().Play();
+			GameObject.Destroy(go, 3f);
 		}
 
 		if (charUI != null)
