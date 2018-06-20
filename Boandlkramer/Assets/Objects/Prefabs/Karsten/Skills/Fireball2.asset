@@ -15,7 +15,7 @@ MonoBehaviour:
   description: "A slow but powerful fire ball with area damage. Don\xB4t hurt yourself"
   manaCost: 20
   skillLevel: 2
-  descriptionNextLevel: 'Fire damage: 40, AOE range: +100%,  Mana cost: 30'
+  descriptionNextLevel: 'Fire damage: +10, AOE range: +100%,  Mana cost: 30'
   nextLevelSkill: {fileID: 11400000, guid: 59cbb17808c94964bb74f8d8c818ee16, type: 2}
   character: {fileID: 0}
   magicEffect: {fileID: 0}

@@ -16,8 +16,15 @@ public class SkilltreeSlot : SkillSlot {
 	{
 		character = player.GetComponent<Character>();
 		charData = character.data;
+
+		// if we cannot increase the level of this skill, we dont show it anymore (for now...)
+		if (skillInSlot != null && skillInSlot.nextLevelSkill == null)
+		{
+			skillInSlot = null;
+		}
 		UpdateSlot();
 	}
+
 
 	public override void OnPointerClick(PointerEventData eventData)
 	{
@@ -26,7 +33,12 @@ public class SkilltreeSlot : SkillSlot {
 			if (charData.SpendSkillPoint(skillInSlot))
 			{
 				skillInSlot = skillInSlot.nextLevelSkill;
+				if (skillInSlot.nextLevelSkill == null)
+				{
+					skillInSlot = null;
+				}
 				UpdateSlot();
+				
 				FindObjectOfType<SkilltreeUI>().UpdateSkilltreeUI();
 				OnPointerEnter(eventData);
 			}

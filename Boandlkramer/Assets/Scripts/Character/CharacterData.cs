@@ -12,10 +12,10 @@ public class CharacterData {
     public int level = 1;
 
     // Attribute points per level
-    public int attributePointsPerLevel = 5;
+    int attributePointsPerLevel = 5;
 
 	// Skill points per level
-	public int skillPointsPerLevel = 1;
+	int skillPointsPerLevel = 1;
 
 	public Dictionary<string, Stat> stats;
 	public Dictionary<string, Attribute> attributes;

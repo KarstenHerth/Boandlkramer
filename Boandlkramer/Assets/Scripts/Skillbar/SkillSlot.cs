@@ -57,6 +57,7 @@ public class SkillSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 		}
 	}
 
+
 	public void AddItem(Item newItem)
 	{
 
@@ -104,6 +105,17 @@ public class SkillSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 
 				textSkillName.GetComponent<TextMeshProUGUI>().text = skillInSlot.name.Remove(skillInSlot.name.Length - 1) + " Level " + skillInSlot.skillLevel;
 				textDescription.GetComponent<TextMeshProUGUI>().text = skillInSlot.description;
+
+				// offensive skill, add damage information
+				OffensiveSkill off = skillInSlot as OffensiveSkill;
+				if (off)
+				{
+					if (off.damage > 0)
+					{
+						textDescription.GetComponent<TextMeshProUGUI>().text += "\n" + off.dmgType.ToString() + " Damage: " + off.damage.ToString();
+					}
+				}
+
 				textManaCost.GetComponent<TextMeshProUGUI>().text = "Mana cost: " + skillInSlot.manaCost.ToString() + "\n";
 			}
 		}
@@ -136,12 +148,10 @@ public class SkillSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 	}
 
 
-
 	public virtual void OnDrag(PointerEventData eventData)
 	{
 		dragObject.transform.position = eventData.position;
 	}
-
 
 
 	public virtual void OnEndDrag(PointerEventData eventData)
@@ -159,11 +169,11 @@ public class SkillSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 
 	}
 
-
 	public virtual void OnRightClick()
 	{
 		// ?
 	}
+
 	public virtual void OnLeftClick()
 	{
 		// assign skill as active
@@ -176,7 +186,5 @@ public class SkillSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 		}
 		
 	}
-
-
 
 }

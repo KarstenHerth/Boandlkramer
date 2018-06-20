@@ -659,6 +659,11 @@ Prefab:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1698004351}
+    - target: {fileID: 114583425018159614, guid: 9fa0ac47407850d4c900662ecdaf2990,
+        type: 2}
+      propertyPath: data.skillPointsPerLevel
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9fa0ac47407850d4c900662ecdaf2990, type: 2}
   m_IsPrefabParent: 0
